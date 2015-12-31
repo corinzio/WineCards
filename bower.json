@@ -1,0 +1,27 @@
+{
+  "name": "winecards",
+  "description": "WineCards Wine Taste Cards",
+  "main": "",
+  "authors": [
+    "Corinzio <corinzio@gmx.it>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/extlib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.8",
+    "angular-material": "~1.0.1",
+    "angular-translate": "~2.8.1",
+    "angular-translate-loader-static-files": "~2.8.1",
+    "font-awesome": "~4.5.0"
+  }
+}

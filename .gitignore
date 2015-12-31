@@ -1,0 +1,7 @@
+node_modules/*
+src/extlib/*
+platforms/*
+pluginS/*
+hooks/*
+dist/*
+www/*

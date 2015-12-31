@@ -1,0 +1,13 @@
+<md-content layout-fill ng-cloak>
+  <md-list >
+    <div ng-repeat="action in getActions()">
+      <md-list-item class="secondary-button-padding" ng-click="executeAction(action.action_id)">
+        <!--<img class="md-avatar" ng-src="img/test.jpeg">-->
+        <span class="md-avatar-icon {{action.icon_id}}"></span>
+        <span translate="{{action.desc_id}}"></span>
+        <span class="fa fa-chevron-right md-secondary"></span>
+      </md-list-item>
+      <md-divider></md-divider>
+    </div>
+  </md-list>
+</md-content>
