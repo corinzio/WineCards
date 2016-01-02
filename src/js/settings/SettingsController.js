@@ -11,5 +11,7 @@ angular.module('WineCards.Settings').controller('SettingsController', ['$scope',
 
     $scope.saveSettings = function saveSettings(prefs){
       console.log('saveSettings' + JSON.stringify(prefs));
+      ConfigService.savePreferences();
     };
+    console.log('SettingsController init');
 }]);

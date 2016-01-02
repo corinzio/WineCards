@@ -6,5 +6,18 @@
   "SETTINGS": "settings",
   "SAVE_BUTTON": "Save",
   "itIT": "Italian",
-  "enUS": "English"
+  "enUS": "English",
+  "GENERICS": "General Options",
+  "EXCEL": "Excellent",
+  "OPTIM": "Optimum",
+  "GOOD": "Good",
+  "SUFF": "Average",
+  "INSUFF": "Insufficient",
+  "POOR": "Poor",
+  "NEGATIVE": "Negative",
+  "frankness": "Frankness",
+  "intensity": "Intensity",
+  "finesse": "Finesse",
+  "armony": "Armony",
+  "CONTINUE": "Continue"
 }

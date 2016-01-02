@@ -5,3 +5,4 @@ pluginS/*
 hooks/*
 dist/*
 www/*
+private/*

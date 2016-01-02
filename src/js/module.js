@@ -37,35 +37,35 @@ WineCards.cordova = {
     console.log("Device Ready called");
   }
 };
-WineCards.angular = angular.module('WineCards', ['WineCards.Config','WineCards.Settings','ngMaterial', 'pascalprecht.translate', 'ngRoute']);
-
+angular.module('WineCards', ['WineCards.Config', 'WineCards.Settings', 'WineCards.Taste', 'ngMaterial', 'pascalprecht.translate', 'ngRoute']);
 //Configure i18n
-WineCards.angular.config(function($translateProvider) {
-  $translateProvider.useStaticFilesLoader({
-    prefix: '/lang/',
-    suffix: '.json'
+angular.module('WineCards')
+  .config(function($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+      prefix: '/lang/',
+      suffix: '.json'
+    });
   });
-});
-
 //Default Routing
-WineCards.angular.config(function($routeProvider, $locationProvider) {
-  $routeProvider.otherwise({
-    redirectTo: '/main'
+angular.module('WineCards')
+  .config(function($routeProvider, $locationProvider) {
+    $routeProvider.otherwise({
+      redirectTo: '/main'
+    });
   });
-});
-
-//Configre Theme
-WineCards.angular.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
-    .primaryPalette('blue')
-    .accentPalette('cyan');
-});
-
+//Configure Theme
+angular.module('WineCards')
+  .config(function($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue')
+      .accentPalette('cyan');
+  });
 //Initialization method
-WineCards.angular.run(function($translate, ConfigService) {
-  ConfigService.setLanguage('enUS');
-  $translate.use(ConfigService.getLanguage());
-});
-
+angular.module('WineCards')
+  .run(function($translate, ConfigService) {
+    //load users preferences
+    ConfigService.loadPreferences();
+    $translate.use(ConfigService.getLanguage());
+  });
 //Init Cordova App
 WineCards.cordova.initialize();
