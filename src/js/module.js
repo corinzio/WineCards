@@ -35,6 +35,8 @@ WineCards.cordova = {
   // function, we must explicitly call 'app.receivedEvent(...);'
   onDeviceReady: function() {
     console.log("Device Ready called");
+    console.log("Bootstrap angular");
+    angular.bootstrap(document, ['WineCards']);
   }
 };
 angular.module('WineCards', ['WineCards.Config', 'WineCards.Settings', 'WineCards.Taste', 'ngMaterial', 'pascalprecht.translate', 'ngRoute']);
@@ -60,9 +62,11 @@ angular.module('WineCards')
       .primaryPalette('blue')
       .accentPalette('cyan');
   });
+
 //Initialization method
 angular.module('WineCards')
   .run(function($translate, ConfigService) {
+    console.log("load prefs");
     //load users preferences
     ConfigService.loadPreferences();
     $translate.use(ConfigService.getLanguage());

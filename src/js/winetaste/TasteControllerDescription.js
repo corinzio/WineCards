@@ -14,6 +14,6 @@
 
 
    angular.module('WineCards.Taste')
-     .controller('TasteControllerDescription', ['TasteService','$translate', '$routeParams', TasteController]);
+     .controller('TasteControllerDescription', ['TasteService','$translate', '$routeParams', TasteControllerDescription]);
 
 })();

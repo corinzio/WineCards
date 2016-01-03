@@ -74,7 +74,7 @@
     return function WineTasteCard() {
       this.id = "";
       this.wine = "";
-      this.date = new Date();
+      this.date = new Date().valueOf();
       this.parameters = {};
       this.parameters.seeing = {
         clearness: 0,
@@ -187,6 +187,15 @@
       };
     };
   }());
+
+//WebSql
+  var CardsDb = (function(){
+    return function CardsDB(){
+
+    };
+  })();
+
+
   /**
    * @ngdoc service
    * @memberof WineCardsTaste
@@ -195,8 +204,13 @@
    * Service used to manage the save and load of wines taste cards in a IndexedDB
    */
   function TasteService($translate) {
+    this.db   = new CardsDb();
     this.wine = null;
     this.edit = true;
+
+    this.initDb = function initDb(){
+
+    };
 
     this.newWine = function newWine() {
       this.wine = new WineCardObject();
