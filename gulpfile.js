@@ -16,7 +16,7 @@ gulp.task('build', ['jshint','index','extlib','templates','languages'], function
   return gulp.src(['src/js/**/module.js', 'src/js/**/routing.js', 'src/js/**/*.js'])
     .pipe(concat('winecards.js'))
     .pipe(beautify())
-    .pipe(gulp.dest('dist/app/'))
+    .pipe(gulp.dest('www/app/'))
     .pipe(stripDebug())
     .pipe(compress())
     .pipe(rename({ extname: '.min.js' }))
@@ -40,7 +40,7 @@ gulp.task('extlib',['extlibjs','extlibcss','extlibfonts'],function(){
 
 gulp.task('extlibjs', function(){
   var extlib = 'src/extlib/';
-  var libdir = 'dist/lib';
+  var libdir = 'www/lib';
   return gulp.src([ extlib + 'angular/angular.min.js',
              extlib + 'angular-route/angular-route.min.js',
              extlib + 'angular-translate/angular-translate.min.js',
@@ -53,7 +53,7 @@ gulp.task('extlibjs', function(){
 
 gulp.task('extlibcss', function(){
   var extlib = 'src/extlib/';
-  var libdir = 'dist/lib';
+  var libdir = 'www/lib';
   return gulp.src([ extlib + 'angular-material/angular-material.min.css',
              extlib + 'font-awesome/css/font-awesome.min.css'])
   .pipe(gulp.dest(libdir));
@@ -61,7 +61,7 @@ gulp.task('extlibcss', function(){
 
 gulp.task('extlibfonts', function(){
   var extlib = 'src/extlib/';
-  var fontdir = 'dist/fonts';
+  var fontdir = 'www/fonts';
   return gulp.src([ extlib + 'font-awesome/fonts/fontawesome-webfont.woff',
              extlib + 'font-awesome/fonts/fontawesome-webfont.woff2'])
   .pipe(gulp.dest(fontdir));
@@ -69,18 +69,18 @@ gulp.task('extlibfonts', function(){
 
 gulp.task('templates', function(){
   var tmplsrc = 'src/tmpl/**/*';
-  var tmpldest = 'dist/tmpl';
+  var tmpldest = 'www/tmpl';
   return gulp.src(tmplsrc).pipe(gulp.dest(tmpldest));
 });
 
 gulp.task('languages', function(){
   var tmplsrc = 'src/lang/**/*';
-  var tmpldest = 'dist/lang';
+  var tmpldest = 'www/lang';
   return gulp.src(tmplsrc).pipe(gulp.dest(tmpldest));
 });
 
 gulp.task('index', function(){
   var src = 'src/index.html';
-  var dest = 'dist/';
+  var dest = 'www/';
   return gulp.src(src).pipe(gulp.dest(dest));
 });

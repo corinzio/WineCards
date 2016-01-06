@@ -1,19 +1,27 @@
-<form name="preferences" novalidate>
-  <md-content layout-padding ng-cloak layout="column">
-    <md-list>
-      <md-list-item>
-        <label for="langSelect">{{'LANGUAGE_SELECT' | translate}}</label>
-        <span flex></span>
-        <md-select id="langSelect" ng-model="prefs.curlang" md-on-close="setLanguage()">
-          <md-option ng-repeat="lang in getLanguages()" value="{{lang}}">
-            {{lang | translate}}
-          </md-option>
-        </md-select>
-      </md-list-item>
-      <!--      <md-divider></md-divider> -->
-    </md-list>
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-      <md-button class="md-raised md-primary" aria-label="Save" ng-click="saveSettings(prefs)">{{'SAVE_BUTTON'|translate}}</md-button>
-    </section>
-  </md-content>
-</form>
+<div>
+  <form name="winedescr" novalidate>
+    <md-subheader class="md-primary">
+      <h3>{{'WINEDSCR'| translate}}</h3>
+    </md-subheader>
+    <md-content layout-padding layout="column" ng-cloak>
+      <div layout-gt-xs="row" layout-padding layout="column">
+        <md-input-container flex="66">
+          <label>{{'WINETITLE' | translate}}</label>
+          <input name="name" ng-model="descCtrl.wine_name" required/>
+        </md-input-container>
+        <md-input-container flex="33">
+          <label>{{ 'WINEYEAR' | translate}}</label>
+          <input md-maxlength="4" name="wineyear" name="year" ng-minlength="4" ng-model="descCtrl.wine_year" pattern="[0-9]{4}" required type="numeric"/>
+        </md-input-container>
+      </div>
+      <div>
+          <md-switch aria-label={{'SPARKLING' | translate}} class="md-primary" ng-model="descCtrl.wine_sparkling">
+            {{'SPARKLING' | translate}}
+          </md-switch>
+      </div>
+      <section layout-align="center center" layout-sm="column" layout-wrap layout="row">
+        <md-button aria-label="{{'CONTINUE'|translate}}" class="md-raised md-primary" name="continue" ng-click=descCtrl.setWineDescription($event) ng-disabled="winedescr.$invalid" type="submit">{{'CONTINUE'|translate}}</md-button>
+      </section>
+    </md-content>
+  </form>
+</div>

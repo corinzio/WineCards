@@ -39,12 +39,12 @@ WineCards.cordova = {
     angular.bootstrap(document, ['WineCards']);
   }
 };
-angular.module('WineCards', ['WineCards.Config', 'WineCards.Settings', 'WineCards.Taste', 'ngMaterial', 'pascalprecht.translate', 'ngRoute']);
+angular.module('WineCards', ['WineCards.Config', 'WineCards.Settings', 'WineCards.Taste', 'WineCards.Common', 'ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate']);
 //Configure i18n
 angular.module('WineCards')
   .config(function($translateProvider) {
     $translateProvider.useStaticFilesLoader({
-      prefix: '/lang/',
+      prefix: 'lang/',
       suffix: '.json'
     });
   });
@@ -62,7 +62,6 @@ angular.module('WineCards')
       .primaryPalette('blue')
       .accentPalette('cyan');
   });
-
 //Initialization method
 angular.module('WineCards')
   .run(function($translate, ConfigService) {
@@ -70,6 +69,14 @@ angular.module('WineCards')
     //load users preferences
     ConfigService.loadPreferences();
     $translate.use(ConfigService.getLanguage());
+  })
+  .run(function(TasteService) {
+    TasteService.initDb();
+  })
+  .run(function($window) {
+    $window.addEventListener('native.keyboardhide', function() {
+      $window.document.activeElement.blur();
+    });
   });
 //Init Cordova App
 WineCards.cordova.initialize();

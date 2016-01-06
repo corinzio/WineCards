@@ -19,5 +19,12 @@
   "intensity": "Intensità",
   "finesse": "Finezza",
   "armony": "Armonia",
-  "CONTINUE": "Continue"
+  "CONTINUE": "Continue",
+  "WINETITLE": "Denominazione",
+  "WINEYEAR": "Anno",
+  "WINEDSCR": "Descrizione del Vino",
+  "SPARKLING": "Frizzante",
+  "CONTINUE": "Continua",
+  "SUCCESS": "Operazione Completata",
+  "FAILURE": "Operazione Fallita"  
 }

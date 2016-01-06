@@ -36,34 +36,35 @@
 </head>
 
 <body ng-cloak>
-  <section layout="row" flex>
-    <left-menu></left-menu>
-    <div layout="column" layout-fill>
-      <md-toolbar ng-controller="SettingsMenuController as SettingsCtrl">
-        <div class="md-toolbar-tools">
-          <md-button class="md-icon-button" aria-label="Back" ng-click="goBack()" ng-hide="hideBack()">
-            <md-icon md-font-icon="fa fa-chevron-left fa-2x"></md-icon>
-          </md-button>
-          <span>WineOn</span>
-          <span flex></span>
-          <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleMenu()">
-            <md-icon md-font-icon="fa fa-bars fa-2x"></md-icon>
-          </md-button>
-        </div>
-      </md-toolbar>
-      <ng-view></ng-view>
-    </div>
-  </section>
-  <script type="text/javascript" src="cordova.js"></script>
-  <script type="text/javascript" src="lib/angular-route.min.js"></script>
-  <script type="text/javascript" src="lib/angular-animate.min.js"></script>
-  <script type="text/javascript" src="lib/angular-aria.min.js"></script>
-  <script type="text/javascript" src="lib/angular-messages.min.js"></script>
-  <!-- Angular Material Library -->
-  <script type="text/javascript" src="lib/angular-material.min.js"></script>
-  <!-- Wineon application javascript -->
-  <script type="text/javascript" src="app/winecards.js"></script>
-
+  <div ng-controller="MasterController as mstrCtrl">
+    <section layout="row" flex>
+      <left-menu></left-menu>
+      <div layout="column" layout-fill>
+        <md-toolbar >
+          <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Back" ng-click="goBack()" ng-hide="hideBack()">
+              <md-icon md-font-icon="fa fa-chevron-left fa-2x"></md-icon>
+            </md-button>
+            <span>WineCards</span>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleMenu()">
+              <md-icon md-font-icon="fa fa-bars fa-2x"></md-icon>
+            </md-button>
+          </div>
+        </md-toolbar>
+        <ng-view></ng-view>
+      </div>
+    </section>
+  </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/angular-route.min.js"></script>
+    <script type="text/javascript" src="lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="lib/angular-aria.min.js"></script>
+    <script type="text/javascript" src="lib/angular-messages.min.js"></script>
+    <!-- Angular Material Library -->
+    <script type="text/javascript" src="lib/angular-material.min.js"></script>
+    <!-- Wineon application javascript -->
+    <script type="text/javascript" src="app/winecards.js"></script>
 </body>
 
 </html>

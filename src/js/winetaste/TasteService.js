@@ -72,9 +72,10 @@
   }());
   var WineTasteCard = (function() {
     return function WineTasteCard() {
-      this.id = "";
-      this.wine = "";
-      this.date = new Date().valueOf();
+      this.id = undefined;
+      this.wine_name = undefined ;
+      this.wine_year = undefined;
+      this.date = undefined;
       this.parameters = {};
       this.parameters.seeing = {
         clearness: 0,
@@ -104,31 +105,14 @@
   }());
   var WineCardObject = (function() {
     return function WineCardObject(i_card) {
-      //vars
-      this.card = i_card || new WineTasteCard();
+      if (typeof(i_card) === 'undefined') {
+        this.card = new WineTasteCard();
+        this.card.date = new Date()
+          .valueOf();
+      } else {
+        this.card = i_card;
+      }
       this.scores = null;
-      /**
-       */
-      this.setSparkling = function setSparkling(val) {
-        if (typeof(val) === "undefined") {
-          val = false;
-        }
-        if (this.card.sparkling === val) {
-          return;
-        }
-        this.card.sparkling = val;
-        if (val === false) {
-          delete this.card.parameters.seeing.dimension;
-          delete this.card.parameters.seeing.persistence;
-        } else {
-          this.card.parameters.seeing.dimension = 0;
-          this.card.parameters.seeing.persistence = 0;
-        }
-        this.azzeraScheda();
-      };
-      this.getSparkling = function getSparkling() {
-        return this.card.sparkling;
-      };
       this.getScheda = function getScheda() {
         return this.card;
       };
@@ -149,7 +133,7 @@
         for (i = 0; i < p1.length; i++) {
           par = p1[i];
           p2 = Object.keys(this.card.parameters[par]);
-          for (j = 0; j < p2.length; j + 1) {
+          for (j = 0; j < p2.length; j++) {
             val = p2[j];
             this.card.parameters[par][val] = 0;
           }
@@ -176,26 +160,64 @@
       this.getParameters = function getParameters() {
         return keys(this.card.parameters);
       };
-      this.getSectionAndScore = function getSectionAndScore(par){
+      this.getSectionAndScore = function getSectionAndScore(par) {
         this.getScores();
         var ret = [];
-        for( var val in this.card.parameters[par] ){
+        for (var val in this.card.parameters[par]) {
           var score = this.score[val];
           ret.push([val, score]);
         }
         return ret;
       };
+      this.getName = function getName() {
+        return this.card.wine_name;
+      };
+      this.setName = function setName(wine_name) {
+        this.card.wine_name = wine_name;
+      };
+      this.getWineYear = function getWineYear() {
+        return this.card.wine_year;
+      };
+      this.setWineYear = function setWineYear(year) {
+        this.card.wine_year = year;
+      };
+      this.getSparkling = function getSparkling() {
+        return this.card.sparkling;
+      };
+      this.setSparkling = function setSparkling(val) {
+        if (typeof(val) === "undefined") {
+          val = false;
+        }
+        if (this.card.sparkling === val) {
+          return;
+        }
+        this.card.sparkling = val;
+        if (val === false) {
+          delete this.card.parameters.seeing.dimension;
+          delete this.card.parameters.seeing.persistence;
+        } else {
+          this.card.parameters.seeing.dimension = 0;
+          this.card.parameters.seeing.persistence = 0;
+        }
+        this.clearCard();
+      };
     };
   }());
-
-//WebSql
-  var CardsDb = (function(){
-    return function CardsDB(){
-
+  //WebSql
+  var CardsDb = (function() {
+    return function CardsDB() {
+      this.db = null;
+      this.openCardsDatabase = function openCardsDatabase() {
+        this.db = window.sqlitePlugin.openDatabase("cards.db", "0.1", "TasteDB", 1024 * 1024 * 10, this.createSchema);
+      };
+      this.createSchema = function createSchema() {
+        console.log("createSchema called!");
+        db.transaction(function(tx) {
+          tx.executeSql('CREATE TABLE Info (Version STRING (10) PRIMARY KEY UNIQUE) WITHOUT ROWID');
+        });
+      };
     };
   })();
-
-
   /**
    * @ngdoc service
    * @memberof WineCardsTaste
@@ -204,25 +226,40 @@
    * Service used to manage the save and load of wines taste cards in a IndexedDB
    */
   function TasteService($translate) {
-    this.db   = new CardsDb();
+    this.db = new CardsDb();
     this.wine = null;
     this.edit = true;
-
-    this.initDb = function initDb(){
-
+    this.initDb = function initCardsDb() {
+      console.log("Initialization of cards DB");
+      //this.db.openCardsDatabase();
     };
-
     this.newWine = function newWine() {
       this.wine = new WineCardObject();
     };
-
-    this.setEdit = function setEdit(val){
+    this.setEdit = function setEdit(val) {
       this.edit = Boolean(val);
     };
-
-    console.log("TasteService instantiated!");
+    this.getWineName = function getWineName() {
+      return this.wine.getName();
+    };
+    this.setWineName = function setWineName(name) {
+      this.wine.setName(name);
+    };
+    this.getWineYear = function getWineYear() {
+      return this.wine.getWineYear();
+    };
+    this.setWineYear = function setWineYear(year) {
+      this.wine.setWineYear(year);
+    };
+    this.getSparkling = function getSparkling() {
+      return this.wine.getSparkling();
+    };
+    this.setSparkling = function setSparkling(sparkling) {
+      this.wine.setSparkling(sparkling);
+    };
+    console.log("Instantiated TasteService");
     return this;
   }
   angular.module('WineCards.Taste')
-    .service('TasteService', ['$translate', TasteService]);
+    .service('TasteService', ['$window', '$translate', TasteService]);
 })();

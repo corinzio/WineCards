@@ -1,3 +1,4 @@
+/**ConfigService.js**/
 (function() {
   /**
    * @ngdoc service
@@ -64,7 +65,7 @@
         var atransl = $translate.instant(a);
         var btransl = $translate.instant(b);
         return atransl.localeCompare(btransl);
-      });      
+      });
     };
     /**
      * @ngdoc method
@@ -85,7 +86,12 @@
      * Stores the configuration in LocalStorage
      */
     this.savePreferences = function savePreferences() {
-      $window.localStorage.setItem(LSPREFS, JSON.stringify(this.preferences));
+      try {
+        $window.localStorage.setItem(LSPREFS, JSON.stringify(this.preferences));
+      } catch (err) {
+        return false;
+      }
+      return true;
     };
     /**
      * @ngdoc method
@@ -146,7 +152,7 @@
     this.setDefaultPreferences = function setDefaultPreferences() {
       this.setLanguage('enUS');
     };
-    console.log("ConfigService instatation Called!");
+    console.log("Instantiated ConfigService");
     return this;
   }
   angular.module('WineCards.Config')
