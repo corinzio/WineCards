@@ -12,7 +12,7 @@ var strip = require('gulp-strip-comments');
 
 //gulp.task('default',[])
 
-gulp.task('build', ['jshint','index','extlib','templates','languages'], function() {
+gulp.task('build', ['jshint','index','extlib','templates','languages','css'], function() {
   return gulp.src(['src/js/**/module.js', 'src/js/**/routing.js', 'src/js/**/*.js'])
     .pipe(concat('winecards.js'))
     .pipe(beautify())
@@ -51,11 +51,18 @@ gulp.task('extlibjs', function(){
              extlib + 'angular-messages/angular-messages.min.js' ]).pipe(gulp.dest(libdir));
 });
 
+gulp.task("css", function(){
+  var srcdir = 'src/css/';
+  var destdir = 'www/lib';
+  return gulp.src([srcdir + '**/*.css']).pipe(gulp.dest(destdir));
+});
+
 gulp.task('extlibcss', function(){
   var extlib = 'src/extlib/';
   var libdir = 'www/lib';
   return gulp.src([ extlib + 'angular-material/angular-material.min.css',
-             extlib + 'font-awesome/css/font-awesome.min.css'])
+             extlib + 'font-awesome/css/font-awesome.min.css',
+             extlib + 'animate.css/animate.min.css',])
   .pipe(gulp.dest(libdir));
 });
 
