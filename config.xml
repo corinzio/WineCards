@@ -7,6 +7,7 @@
     <author email="corinzio@gmx.com" href="corinzio.tumblr.com">
       Corinzio
     </author>
+    <icon src="src/res/grape.png" />
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
@@ -18,6 +19,7 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
