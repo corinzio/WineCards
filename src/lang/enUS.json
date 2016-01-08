@@ -26,5 +26,9 @@
   "SPARKLING": "Sparkling",
   "CONTINUE": "Continue",
   "SUCCESS": "Operation Completed",
-  "FAILURE": "Operation Failed"
+  "FAILURE": "Operation Failed",
+  "seeing": "Seeing",
+  "smell": "Smell",
+  "taste": "Taste",
+  "overall": "Overall"
 }

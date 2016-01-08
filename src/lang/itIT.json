@@ -26,5 +26,9 @@
   "SPARKLING": "Frizzante",
   "CONTINUE": "Continua",
   "SUCCESS": "Operazione Completata",
-  "FAILURE": "Operazione Fallita"  
+  "FAILURE": "Operazione Fallita",
+  "seeing": "Vista",
+  "smell": "Olfatto",
+  "taste": "Gusto",
+  "overall": "Giudizio Complessivo"
 }

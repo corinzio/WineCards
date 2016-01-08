@@ -13,7 +13,7 @@
     to not accidentally inherit a delay property from another CSS class */
   transition-duration: 0s;
 }
-.winecardviw.ng-enter.ng-enter-active {
+.winecardview.ng-enter.ng-enter-active {
   /* standard transition styles */
   opacity: 1;
 }
@@ -22,4 +22,11 @@
   display: block;
   width: 100%;
   position:fixed;
+}
+md-toolbar.wine-param {
+ min-height: 0px;
+}
+param-of-wine {
+  display:block;
+  padding-top: 3px;
 }

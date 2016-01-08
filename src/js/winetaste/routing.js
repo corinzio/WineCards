@@ -4,4 +4,9 @@ angular.module('WineCards').config(function($routeProvider, $locationProvider) {
     controller: 'TasteControllerDescription',
     controllerAs: 'descCtrl'
   });
+  $routeProvider.when('/wine/:wineId/score',{
+    templateUrl: 'tmpl/winescore.html',
+    controller: 'TasteControllerScore',
+    controllerAs: 'scoreCtrl'
+  });
 });

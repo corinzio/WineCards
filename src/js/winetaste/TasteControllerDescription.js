@@ -3,11 +3,11 @@
   /**
    * @ngdoc controller
    * @memberof WineCardsTaste
-   * @name WineCardsTaste:TasteController
+   * @name WineCardsTaste:TasteControllerDescription
    * @description
    * Controller used to show and edit taste cards of a wine.
    */
-   function TasteControllerDescription($scope,$window,TasteService, $translate, $routeParams){
+   function TasteControllerDescription($scope,$window,TasteService, $translate, $routeParams, $location){
     this.wine_name = TasteService.getWineName();
     this.wine_year = TasteService.getWineYear();
     this.wine_sparkling = TasteService.getSparkling();
@@ -31,6 +31,7 @@
       this.setSparkling();
       this.setWineName();
       this.setWineYear();
+      $location.path($location.path()+'/score');
     };
 
     $scope.$on('BACKBTN', this.backBtn);
@@ -41,6 +42,6 @@
 
 
    angular.module('WineCards.Taste')
-     .controller('TasteControllerDescription', ['$scope','$window','TasteService','$translate', '$routeParams', TasteControllerDescription]);
+     .controller('TasteControllerDescription', ['$scope','$window','TasteService','$translate', '$routeParams', '$location', TasteControllerDescription]);
 
 })();

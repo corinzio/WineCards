@@ -158,7 +158,7 @@
         return this.card.tot_score;
       };
       this.getParameters = function getParameters() {
-        return keys(this.card.parameters);
+        return Object.keys(this.card.parameters);
       };
       this.getSectionAndScore = function getSectionAndScore(par) {
         this.getScores();
@@ -256,6 +256,9 @@
     };
     this.setSparkling = function setSparkling(sparkling) {
       this.wine.setSparkling(sparkling);
+    };
+    this.getParameters = function getParameters(){
+      return this.wine.getParameters();
     };
     console.log("Instantiated TasteService");
     return this;

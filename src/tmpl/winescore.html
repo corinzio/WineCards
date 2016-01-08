@@ -1,5 +1,8 @@
 <div>
-  <form name="winedescr" novalidate>
+  <form name="winescore" novalidate>
+    <div ng-repeat="param in scoreCtrl.getParameters()">
+      <param-of-wine/>
+      <!--
     <md-subheader class="md-primary">
       <h3>{{'WINEDSCR'| translate}}</h3>
     </md-subheader>
@@ -23,5 +26,7 @@
         <md-button aria-label="{{'CONTINUE'|translate}}" class="md-raised md-primary" name="continue" ng-click=descCtrl.setWineDescription($event) ng-disabled="winedescr.$invalid" type="submit">{{'CONTINUE'|translate}}</md-button>
       </section>
     </md-content>
+  -->
+    </div>
   </form>
 </div>
