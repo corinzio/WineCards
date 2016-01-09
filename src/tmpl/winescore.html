@@ -1,32 +1,26 @@
-<div>
+<div layout-fill layout="column">
   <form name="winescore" novalidate>
-    <div ng-repeat="param in scoreCtrl.getParameters()">
-      <param-of-wine/>
-      <!--
-    <md-subheader class="md-primary">
-      <h3>{{'WINEDSCR'| translate}}</h3>
-    </md-subheader>
-    <md-content layout-padding layout="column" ng-cloak>
-      <div layout-gt-xs="row" layout-padding layout="column">
-        <md-input-container flex="66">
-          <label>{{'WINETITLE' | translate}}</label>
-          <input name="name" ng-model="descCtrl.wine_name" required/>
-        </md-input-container>
-        <md-input-container flex="33">
-          <label>{{ 'WINEYEAR' | translate}}</label>
-          <input type="number" ng-maxlength="4" ng-minlength="4" name="wineyear" ng-model="descCtrl.wine_year"  required />
-        </md-input-container>
+    <section>
+      <div ng-repeat="param in ::scoreCtrl.parameters">
+        <md-toolbar class="wine-param">
+          <span>{{param | translate }}
+          </span>
+        </md-toolbar>
+        <md-content layout-fill layout="column">
+          <div ng-repeat="values in scoreCtrl.scores[param]">
+            <md-input-container style="margin-right: 10px;">
+              <label>{{values[0]|translate}}</label>
+              <md-select ng-model="scoreCtrl.points[param][values[0]]">
+                <md-option ng-repeat="(score, desc) in values[1]" value="{{score}}">{{desc|translate}}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </md-content>
       </div>
-      <div>
-          <md-switch aria-label={{'SPARKLING' | translate}} class="md-primary" ng-model="descCtrl.wine_sparkling">
-            {{'SPARKLING' | translate}}
-          </md-switch>
-      </div>
-      <section layout-align="center center" layout-sm="column" layout-wrap layout="row">
-        <md-button aria-label="{{'CONTINUE'|translate}}" class="md-raised md-primary" name="continue" ng-click=descCtrl.setWineDescription($event) ng-disabled="winedescr.$invalid" type="submit">{{'CONTINUE'|translate}}</md-button>
-      </section>
-    </md-content>
-  -->
-    </div>
+    </section>
+    <section layout-align="center center" layout-wrap layout="row">
+      <md-button aria-label="Reset" class="md-raised md-primary" ng-click="scoreCtrl.resetValues()">{{'RESET'|translate}}</md-button>
+      <md-button aria-label="Continue" class="md-raised md-primary" ng-click="scoreCtrl.saveValues()">{{'CONTINUE'|translate}}</md-button>
+    </section>
   </form>
 </div>

@@ -18,7 +18,14 @@
   "frankness": "Franchezza",
   "intensity": "Intensità",
   "finesse": "Finezza",
+  "clearness": "Limpidezza",
   "armony": "Armonia",
+  "aftertaste": "Retrogusto",
+  "dimension": "Dimensione",
+  "tonality": "Tonalità",
+  "persistence": "Persistenza",
+  "winebody": "Corpo",
+  "total": "Giudizio complessivo",
   "CONTINUE": "Continue",
   "WINETITLE": "Denominazione",
   "WINEYEAR": "Anno",
@@ -30,5 +37,6 @@
   "seeing": "Vista",
   "smell": "Olfatto",
   "taste": "Gusto",
-  "overall": "Giudizio Complessivo"
+  "overall": "Giudizio Complessivo",
+  "RESET": "Azzera"
 }

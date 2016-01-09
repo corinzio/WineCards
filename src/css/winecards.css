@@ -1,10 +1,10 @@
 .winecardview.ng-enter {
   overflow: hidden;
-  animation: slideInRight 0.75s;
+  animation: slideInRight 0.5s;
 }
 .winecardview.ng-leave {
   overflow: hidden;
-  animation: slideOutLeft 0.755s;
+  animation: slideOutLeft 0.5s;
 }
 .winecardview.ng-enter-stagger {
   /* this will have a 100ms delay between each successive leave animation */
@@ -18,15 +18,16 @@
   opacity: 1;
 }
 .winecardview.ng-enter, .winecardview.ng-leave {
-  transition: ease-in-out 0.75s;
+  transition: ease-in-out 0.5s;
   display: block;
   width: 100%;
-  position:fixed;
+  position: fixed;
+  opacity: 0;
 }
 md-toolbar.wine-param {
- min-height: 0px;
+  min-height: 0px;
 }
 param-of-wine {
-  display:block;
+  display: block;
   padding-top: 3px;
 }

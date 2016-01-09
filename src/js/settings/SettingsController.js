@@ -14,17 +14,15 @@
       var msg;
       console.log('saveSettings' + JSON.stringify(prefs));
       ok = ConfigService.savePreferences();
-      if(ok){
+      if (ok) {
         msg = $translate.instant("SUCCESS");
-      }else{
+      } else {
         msg = $translate.instant("FAILURE");
       }
-      $mdToast.show(
-        $mdToast.simple()
-          .textContent(msg)
-          .position("top left")
-          .hideDelay(2000)
-      );
+      $mdToast.show($mdToast.simple()
+        .textContent(msg)
+        .position("top left")
+        .hideDelay(2000));
     };
     this.backBtn = function bakBtn(event, data) {
       console.log('receving backbtn');

@@ -11,13 +11,13 @@
         </md-input-container>
         <md-input-container flex="33">
           <label>{{ 'WINEYEAR' | translate}}</label>
-          <input type="number" ng-maxlength="4" ng-minlength="4" name="wineyear" ng-model="descCtrl.wine_year"  required />
+          <input name="wineyear" ng-maxlength="4" ng-minlength="4" ng-model="descCtrl.wine_year" required type="number"/>
         </md-input-container>
       </div>
       <div>
-          <md-switch aria-label={{'SPARKLING' | translate}} class="md-primary" ng-model="descCtrl.wine_sparkling">
-            {{'SPARKLING' | translate}}
-          </md-switch>
+        <md-switch aria-label={{'SPARKLING' | translate}} class="md-primary" ng-model="descCtrl.wine_sparkling">
+          {{'SPARKLING' | translate}}
+        </md-switch>
       </div>
       <section layout-align="center center" layout-sm="column" layout-wrap layout="row">
         <md-button aria-label="{{'CONTINUE'|translate}}" class="md-raised md-primary" name="continue" ng-click=descCtrl.setWineDescription($event) ng-disabled="winedescr.$invalid" type="submit">{{'CONTINUE'|translate}}</md-button>

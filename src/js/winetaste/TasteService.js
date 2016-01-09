@@ -49,7 +49,6 @@
         this.parameters.taste.winebody = score7;
         this.parameters.taste.armony = score7;
         this.parameters.taste.persistence = score7;
-        this.parameters.taste.aftertaste = score7;
         this.parameters.overall.total = score7;
       } else {
         //punteggi fermi
@@ -66,14 +65,14 @@
         this.parameters.taste.armony = score8;
         this.parameters.taste.persistence = score8;
         this.parameters.taste.aftertaste = score6;
-        this.parameters.overall = score8;
+        this.parameters.overall.total = score8;
       }
     };
   }());
   var WineTasteCard = (function() {
     return function WineTasteCard() {
       this.id = undefined;
-      this.wine_name = undefined ;
+      this.wine_name = undefined;
       this.wine_year = undefined;
       this.date = undefined;
       this.parameters = {};
@@ -92,7 +91,7 @@
         frankness: 0,
         intensity: 0,
         winebody: 0,
-        armonu: 0,
+        armony: 0,
         persistence: 0,
         aftertaste: 0
       };
@@ -120,8 +119,6 @@
         this.scores = new Scores(this.getSparkling());
         return this.scores;
       };
-      this.saveCard = function saveCard() {};
-      this.deleteCard = function deleteCard() {};
       this.clearCard = function clearCard() {
         var i,
           j,
@@ -160,11 +157,12 @@
       this.getParameters = function getParameters() {
         return Object.keys(this.card.parameters);
       };
-      this.getSectionAndScore = function getSectionAndScore(par) {
-        this.getScores();
+      this.getAttributesAndScores = function getAttributesAndScores(par) {
         var ret = [];
-        for (var val in this.card.parameters[par]) {
-          var score = this.score[val];
+        var score;
+        for (var val in this.scores.parameters[par]) {
+          //score = this.scores.parameters[par][val];
+          score = angular.copy(this.scores.parameters[par][val]);
           ret.push([val, score]);
         }
         return ret;
@@ -195,9 +193,13 @@
         if (val === false) {
           delete this.card.parameters.seeing.dimension;
           delete this.card.parameters.seeing.persistence;
+          if (this.card.parameters.taste.aftertaste === undefined) {
+            this.card.parameters.taste.aftertaste = 0;
+          }
         } else {
           this.card.parameters.seeing.dimension = 0;
           this.card.parameters.seeing.persistence = 0;
+          delete this.card.parameters.taste.aftertaste;
         }
         this.clearCard();
       };
@@ -257,8 +259,21 @@
     this.setSparkling = function setSparkling(sparkling) {
       this.wine.setSparkling(sparkling);
     };
-    this.getParameters = function getParameters(){
+    this.getParameters = function getParameters() {
+      this.wine.getScores();
       return this.wine.getParameters();
+    };
+    this.getAttributesAndScores = function getAttributesAndScores(par) {
+      return this.wine.getAttributesAndScores(par);
+    };
+    this.getWinePoints = function getWinePoints() {
+      return angular.copy(this.wine.card.parameters);
+    };
+    this.setWinePoints = function setWinePoints(points) {
+      this.wine.card.parameters = angular.copy(points);
+    };
+    this.resetValues = function resetValues() {
+      this.wine.clearCard();
     };
     console.log("Instantiated TasteService");
     return this;

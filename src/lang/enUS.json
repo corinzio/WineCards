@@ -19,6 +19,13 @@
   "intensity": "Intensity",
   "finesse": "Finesse",
   "armony": "Armony",
+  "clearness": "Clearness",
+  "aftertaste": "Aftertaste",
+  "dimension": "Dimension",
+  "tonality": "Tonality",
+  "persistence": "Persistence",
+  "winebody": "Body",
+  "total": "Global Judgement",
   "CONTINUE": "Continue",
   "WINETITLE": "Name",
   "WINEYEAR": "Year",
@@ -30,5 +37,6 @@
   "seeing": "Seeing",
   "smell": "Smell",
   "taste": "Taste",
-  "overall": "Overall"
+  "overall": "Overall",
+  "RESET": "Reset"
 }
