@@ -71,7 +71,7 @@
   }());
   var WineTasteCard = (function() {
     return function WineTasteCard() {
-      this.id = undefined;
+      this.id = 0;
       this.wine_name = undefined;
       this.wine_year = undefined;
       this.date = undefined;
@@ -205,19 +205,62 @@
       };
     };
   }());
-  //WebSql
+  //IndexedDB
   var CardsDb = (function() {
-    return function CardsDB() {
-      this.db = null;
-      this.openCardsDatabase = function openCardsDatabase() {
-        this.db = window.sqlitePlugin.openDatabase("cards.db", "0.1", "TasteDB", 1024 * 1024 * 10, this.createSchema);
+    return function CardsDB($window) {
+//lexical closures
+      var self = this;
+      var indexedDB = $window.indexedDB || $window.webkitIndexedDB || $window.mozIndexedDB;
+//parameters
+      this.dbName = "WineCards";
+      this.stores = {};
+      this.stores.winetastecards = "winetastecards";
+      this.winedb = null;
+
+      this.addWine = function addWine(wine,ok,no){
+        var copy = angular.copy(wine);
+        if( copy.id === 0 ){ delete copy.id;}
+        //add callback
+        var req = this.winedb.transaction(this.stores.winetastecards,"readwrite").objectStore(this.stores.winetastecards).put(copy);
+        req.onsuccess = ok;
+        req.onerror = no;
       };
-      this.createSchema = function createSchema() {
-        console.log("createSchema called!");
-        db.transaction(function(tx) {
-          tx.executeSql('CREATE TABLE Info (Version STRING (10) PRIMARY KEY UNIQUE) WITHOUT ROWID');
-        });
+      this.init = function init() {
+        var req = indexedDB.open('WineCards', 1);
+        req.onerror = this.errorOpenDB;
+        req.onsuccess = this.successOpenDB;
+        req.onupgradeneeded = this.createWineTasteCardsDB;
       };
+
+      this.errorOpenDB = function errorOpenDB(event){
+          console.log("error opening database");
+      };
+
+      this.successOpenDB = function  successOpenDB(event){
+        self.winedb = event.target.result;
+        console.log("Database Open");
+      };
+
+      this.createWineTasteCardsDB = function createWineTasteCardsDB(event) {
+        if (event.oldVersion === 0) {
+          console.log("create new database");
+          var db = event.target.result;
+          var storeobj = db.createObjectStore(self.stores.winetastecards, {
+            keyPath: "id",
+            autoIncrement: true
+          });
+          storeobj.createIndex("wine_name", "wine_name", {
+            unique: false
+          });
+          storeobj.createIndex("date", "date", {
+            unique: false
+          });
+        } else {
+          console.log("upgrade db");
+        }
+      };
+      //auto call to init when creating the object
+      this.init();
     };
   })();
   /**
@@ -227,8 +270,9 @@
    * @description
    * Service used to manage the save and load of wines taste cards in a IndexedDB
    */
-  function TasteService($translate) {
-    this.db = new CardsDb();
+  function TasteService($window, $translate) {
+    var self = this;
+    this.db = new CardsDb($window);
     this.wine = null;
     this.edit = true;
     this.initDb = function initCardsDb() {
@@ -274,6 +318,10 @@
     };
     this.resetValues = function resetValues() {
       this.wine.clearCard();
+    };
+    this.storeWine = function storeWine(ok,no) {
+      this.wine.tot_score();
+      this.db.addWine(this.wine.getScheda(),ok,no);
     };
     console.log("Instantiated TasteService");
     return this;
