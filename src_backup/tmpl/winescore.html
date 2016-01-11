@@ -1,0 +1,26 @@
+<div layout-fill layout="column">
+  <form name="winescore" novalidate>
+    <section>
+      <div ng-repeat="param in ::scoreCtrl.parameters">
+        <md-toolbar class="wine-param">
+          <span>{{param | translate }}
+          </span>
+        </md-toolbar>
+        <md-content layout-fill layout="column">
+          <div ng-repeat="values in scoreCtrl.scores[param]">
+            <md-input-container style="margin-right: 10px;">
+              <label>{{values[0]|translate}}</label>
+              <md-select ng-model="scoreCtrl.points[param][values[0]]">
+                <md-option ng-repeat="(score, desc) in values[1]" value="{{score}}">{{desc|translate}}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </md-content>
+      </div>
+    </section>
+    <section layout-align="center center" layout-wrap layout="row">
+      <md-button aria-label="Reset" class="md-raised md-primary" ng-click="scoreCtrl.resetValues()">{{'RESET'|translate}}</md-button>
+      <md-button aria-label="Continue" class="md-raised md-primary" ng-click="scoreCtrl.saveValues()">{{'CONTINUE'|translate}}</md-button>
+    </section>
+  </form>
+</div>

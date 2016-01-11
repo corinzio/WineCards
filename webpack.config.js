@@ -1,5 +1,5 @@
+(function(){
 'use strict';
-
 // Modules
 var webpack = require('webpack');
 
@@ -9,7 +9,7 @@ module.exports = {
     },
 	output: {
       // Absolute output directory
-      path: __dirname + '/public',
+      path: __dirname + '/dist',
 
       // Output path from the view of the page
       // Uses webpack-dev-server in development
@@ -21,10 +21,10 @@ module.exports = {
 
       // Filename for non-entry points
       // Only adds hash in build mode
-      chunkFilename: '[name].bundle.js'		
+      chunkFilename: '[name].bundle.js'
 	},
 	module: {
-	//preLoaders: [],		
+	//preLoaders: [],
     loaders: [{
       // JS LOADER
       // Reference: https://github.com/babel/babel-loader
@@ -34,5 +34,16 @@ module.exports = {
       loader: 'babel!jshint',
       exclude: /node_modules/
     }]
-  }		
-}
+  },
+	jshint: {
+			camelcase: true,
+			emitErrors: false,
+			failOnHint: false,
+			esnext: true
+	},
+	plugins: [
+		//new webpack.optimize.UglifyJsPlugin(),
+		new webpack.optimize.DedupePlugin()
+	]
+};
+}());
