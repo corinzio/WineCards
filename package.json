@@ -9,6 +9,8 @@
     "angular-route": "^1.4.8"
   },
   "devDependencies": {
+    "angular-translate": "^2.8.1",
+    "angular-translate-loader-static-files": "^2.8.1",
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.1",
     "dexie": "^1.2.0",
