@@ -9,7 +9,7 @@
         },
         output: {
             // Absolute output directory
-            path: __dirname + '/dist',
+            path: __dirname + '/www',
 
             // Output path from the view of the page
             // Uses webpack-dev-server in development
@@ -31,7 +31,7 @@
                     // Transpile .js files using babel-loader
                     // Compiles ES6 and ES7 into ES5 code
                     test: /\.js$/,
-                    loader: 'babel!jshint',
+                    loader: 'babel',
                     exclude: /node_modules/
                 },
                 {

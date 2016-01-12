@@ -4,11 +4,15 @@ import translate from 'angular-translate';
 import translateLoaderStaticFiles from 'angular-translate-loader-static-files';
 import ngMaterial from 'angular-material';
 import WineCardsMain from './main';
-import MasterController from './MasterController.js'
+import MasterController from './MasterController.js';
+import WineCardsPreferences from './preferences';
 
 module.exports = (function () {
     'use strict';
-    return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', 'WineCards.Main'])
+    /**
+     * Main module of the WineCards angular application
+     */
+    return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences])
         .controller('MasterController', MasterController)
         //Configure i18n
         .config(['$translateProvider', function ($translateProvider, $translate) {
@@ -24,6 +28,7 @@ module.exports = (function () {
                 redirectTo: '/main'
             });
   }])
+        //init translation language
         .run(['$translate', function ($translate) {
             $translate.use('itIT');
     }])
