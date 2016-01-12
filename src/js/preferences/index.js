@@ -7,5 +7,8 @@ import translate from 'angular-translate';
  * Module for the user settings preferences of the app.
  */
 module.exports = (function () {
-    return angular.module('WineCards.Preferences', ['pascalprecht.translate']).name;
+    'use strict';
+    return angular.module('WineCards.Preferences', ['pascalprecht.translate'])
+    .service('prefService', prefService)
+    .name;
 }());

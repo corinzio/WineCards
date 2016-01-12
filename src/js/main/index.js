@@ -10,5 +10,5 @@ module.exports = (function(){
     'use strict';
     return angular.module('WineCards.Main',[ngRoute])
     .config(mainroutes)
-    .controller('MainController',MainController).name
-}())
+    .controller('MainController',MainController).name;
+}());

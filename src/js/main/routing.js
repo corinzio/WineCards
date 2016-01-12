@@ -4,8 +4,8 @@ export default function mainroutes ($routeProvider) {
   $routeProvider.when('/main', {
     template: require('./main.html'),
     controller: 'MainController',
-    controllerAs: 'mainCtrl'  
+    controllerAs: 'mainCtrl'
   });
-};
+}
 
 mainroutes.$inject = ['$routeProvider'];
