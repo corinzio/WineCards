@@ -1,6 +1,12 @@
 import angular from 'angular';
 import WineCards from './js';
 
+//CSS requires
+require('angular-material/angular-material.min.css');
+require('animate.css/animate.min.css');
+require("font-awesome-webpack");
+require('./static/css/winecards.css');
+
 var app = {};
 app.cordova = {
   // Application Constructor

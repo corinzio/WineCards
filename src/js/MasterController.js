@@ -39,6 +39,7 @@ export default class MasterController {
             $mdSidenav('leftMenu')
                 .toggle();
         };
+        console.log("MasterController instantiated");
     }
 }
 

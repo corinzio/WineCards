@@ -7,9 +7,6 @@ import WineCardsMain from './main';
 import MasterController from './MasterController.js';
 import WineCardsPreferences from './preferences';
 
-//CSS requires
-require('angular-material/angular-material.min.css');
-
 module.exports = (function () {
     'use strict';
     /**

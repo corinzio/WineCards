@@ -41,7 +41,17 @@
 <body ng-cloak>
   <div ng-controller="MasterController as mstrCtrl">
     <section layout="row" flex>
-      <left-menu></left-menu>
+      <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="leftMenu">
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools">{{'MENU_TITLE' | translate }}</h1>
+        </md-toolbar>
+        <md-content layout="column">
+          <md-list-item class="secondary-button-padding" ng-click="navigateTo('NAV_SETTINGS')">
+            <span class="md-avatar-icon fa fa-cogs "></span>
+            <span>{{'GENERICS'|translate}}</span>
+          </md-list-item>
+        </md-content>
+      </md-sidenav>
       <div layout="column" layout-fill>
         <md-toolbar>
           <div class="md-toolbar-tools">
