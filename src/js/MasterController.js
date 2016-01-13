@@ -12,7 +12,6 @@ export default class MasterController {
             $scope.$broadcast('BACKBTN');
         };
         $scope.hideBack = function hideBack() {
-            console.log("hideback called");
             if ($location.path() === '/main') {
                 return true;
             } else {
@@ -40,7 +39,7 @@ export default class MasterController {
             $mdSidenav('leftMenu')
                 .toggle();
         };
-    };
-};
+    }
+}
 
 MasterController.$inject = ['$scope', '$mdSidenav', '$translate', '$location', '$window'];

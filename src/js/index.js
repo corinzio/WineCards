@@ -32,8 +32,11 @@ module.exports = (function () {
             });
   }])
         //init translation language
-        .run(['$translate', function ($translate) {
-            $translate.use('itIT');
+        .run(['$translate','prefService', function ($translate, prefService) {
+          console.log("load prefs");
+          //load users preferences
+          prefService.loadPreferences();
+          $translate.use(prefService.getLanguage());
     }])
         .name;
 }());

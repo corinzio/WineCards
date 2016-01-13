@@ -1,0 +1,18 @@
+<form name="general_preferences" novalidate>
+  <md-content layout-padding ng-cloak layout="column">
+    <md-list>
+      <md-list-item>
+        <label for="langSelect">{{'LANGUAGE_SELECT' | translate}}</label>
+        <span flex></span>
+        <md-select id="langSelect" ng-model="genPrefCtrl.prefs.curlang" md-on-close="genPrefCtrl.setLanguage(genPrefCtrl.prefs.curlang)">
+          <md-option ng-repeat="lang in genPrefCtrl.languages" value="{{lang}}">
+            {{lang | translate}}
+          </md-option>
+        </md-select>
+      </md-list-item>
+    </md-list>
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button class="md-raised md-primary" aria-label="Save" ng-click="genPrefCtrl.savePreferences()">{{'SAVE_BUTTON'|translate}}</md-button>
+    </section>
+  </md-content>
+</form>

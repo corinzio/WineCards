@@ -123,8 +123,8 @@ export default class prefService {
       * @method getPreferences
       * @return {Object} copy of preferences object
       */
-    this.getPreferences(){
-        angular.copy(this.preferences);
+    this.getPreferences = function getPreferences(){
+        return angular.copy(this.preferences);
     };
     console.log("Instantiated ConfigService");
   }

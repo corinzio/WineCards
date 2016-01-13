@@ -13,6 +13,7 @@ module.exports = (function () {
     'use strict';
     return angular.module('WineCards.Preferences', ['pascalprecht.translate', 'ngRoute'])
     .service('prefService', prefService)
+    .controller('GeneralPrefController',GeneralPrefController)
     .config(prefroutes)
     .name;
 }());
