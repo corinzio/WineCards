@@ -119,6 +119,13 @@ export default class prefService {
     this.setDefaultPreferences = function setDefaultPreferences() {
       this.setLanguage('enUS');
     };
+    /**
+      * @method getPreferences
+      * @return {Object} copy of preferences object
+      */
+    this.getPreferences(){
+        angular.copy(this.preferences);
+    };
     console.log("Instantiated ConfigService");
   }
 }

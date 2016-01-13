@@ -1,6 +1,9 @@
 import angular from 'angular';
 import prefService from './prefService';
 import translate from 'angular-translate';
+import prefroutes from './routing.js';
+import ngRoute from 'angular-route';
+import GeneralPrefController from './GeneralPrefController.js';
 
 
 /**
@@ -8,7 +11,8 @@ import translate from 'angular-translate';
  */
 module.exports = (function () {
     'use strict';
-    return angular.module('WineCards.Preferences', ['pascalprecht.translate'])
+    return angular.module('WineCards.Preferences', ['pascalprecht.translate', 'ngRoute'])
     .service('prefService', prefService)
+    .config(prefroutes)
     .name;
 }());

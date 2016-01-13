@@ -26,7 +26,7 @@ export default class MainController {
                 case 'NEW_WINE_ACT':
                     //TasteService.newWine();
                     console.log('redirect path');
-                    //$location.path('/wine/1');
+                    //$location.path('/wine/new');
                     break;
             }
 
