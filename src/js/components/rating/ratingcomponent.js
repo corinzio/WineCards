@@ -3,7 +3,7 @@ import angular from 'angular';
 
 export default function ratingComponent() {
     'use strict';
-    rc = {};
+    var rc = {};
 
     rc.restrict = 'AE';
     rc.scope = {

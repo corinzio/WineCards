@@ -6,7 +6,7 @@ import ngMaterial from 'angular-material';
 import WineCardsMain from './main';
 import MasterController from './MasterController.js';
 import WineCardsPreferences from './preferences';
-import starRating from './components/rating';
+import comp from './components';
 
 module.exports = (function () {
     'use strict';
@@ -37,6 +37,6 @@ module.exports = (function () {
             $translate.use(prefService.getLanguage());
     }])
         //add components
-        .directive('starRating', starRating)
+        .directive('starRating', comp.rating)
         .name;
 }());
