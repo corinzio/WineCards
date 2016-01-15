@@ -6,6 +6,7 @@ import ngMaterial from 'angular-material';
 import WineCardsMain from './main';
 import MasterController from './MasterController.js';
 import WineCardsPreferences from './preferences';
+import starRating from './components/rating';
 
 module.exports = (function () {
     'use strict';
@@ -29,11 +30,13 @@ module.exports = (function () {
             });
   }])
         //init translation language
-        .run(['$translate','prefService', function ($translate, prefService) {
-          console.log("load prefs");
-          //load users preferences
-          prefService.loadPreferences();
-          $translate.use(prefService.getLanguage());
+        .run(['$translate', 'prefService', function ($translate, prefService) {
+            console.log("load prefs");
+            //load users preferences
+            prefService.loadPreferences();
+            $translate.use(prefService.getLanguage());
     }])
+        //add components
+        .directive('starRating', starRating)
         .name;
 }());
