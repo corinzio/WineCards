@@ -32,7 +32,7 @@
         // Transpile .js files using babel-loader
         // Compiles ES6 and ES7 into ES5 code
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel!jshint',
         exclude: /node_modules/
       }, {
         // HTML LOADER
@@ -62,8 +62,8 @@
       })
     ],
     jshint: {
-      camelcase: true,
-      emitErrors: false,
+      camelcase: false,
+      emitErrors: true,
       failOnHint: false,
       esnext: true
     },

@@ -1,3 +1,4 @@
 {
+  "camelcase": false,
   "esnext": true
 }
