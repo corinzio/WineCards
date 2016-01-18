@@ -29,11 +29,11 @@ module.exports = (function() {
       });
     }])
     //init translation language
-    .run(['$translate', 'prefService', function($translate, prefService) {
+    .run(['$translate', 'PrefService', function($translate, PrefService) {
       console.log("load prefs");
       //load users preferences
-      prefService.loadPreferences();
-      $translate.use(prefService.getLanguage());
+      PrefService.loadPreferences();
+      $translate.use(PrefService.getLanguage());
     }])
     //add components
     .directive('starRating', comp.rating)

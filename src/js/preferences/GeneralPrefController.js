@@ -71,4 +71,4 @@ export default class GeneralPrefController{
     }
 }
 
-GeneralPrefController.$inject = ['$window', '$scope', '$mdToast', '$translate', 'prefService'];
+GeneralPrefController.$inject = ['$window', '$scope', '$mdToast', '$translate', 'PrefService'];

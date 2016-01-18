@@ -1,11 +1,12 @@
-/** prefService.js **/
-import translate from 'angular-translate';
+/** PrefService.js **/
 import angular from 'angular';
+import translate from 'angular-translate';
+
 /*
  * Application preferences for the app.
  * Store the informations in LocalStorage.
  */
-export default class prefService {
+export default class PrefService {
   constructor($window, $translate) {
     /**
      * @property {String} LSPREFS constant identifier for the LocalStorage of
@@ -129,4 +130,4 @@ export default class prefService {
     console.log("Instantiated ConfigService");
   }
 }
-prefService.$inject = ['$window', '$translate'];
+PrefService.$inject = ['$window', '$translate'];
