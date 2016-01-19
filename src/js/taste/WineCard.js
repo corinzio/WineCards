@@ -1,4 +1,5 @@
-export default function WineCard(sparkling){
+/** WineCards.js **/
+export default function WineCard(spark = false){
     'use strict';
     let card = {};
     this.id = 0;
@@ -11,7 +12,7 @@ export default function WineCard(sparkling){
       tonality: 0,
       intensity: 0
     };
-    if(sparkling === true){
+    if(spark === true){
       this.parameters.seeing.dimension = 0;
       this.parameters.seeing.persistence = 0;
     }
@@ -28,12 +29,12 @@ export default function WineCard(sparkling){
       armony: 0,
       persistence: 0,
     };
-    if(sparkling !== true){
+    if(spark !== true){
       this.parameters.taste.aftertaste = 0;
     }
     this.parameters.overall = {
       total: 0
     };
-    this.sparkling = false;
+    this.sparkling = spark;
     this.tot_score = 0;
 }

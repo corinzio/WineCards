@@ -3,7 +3,7 @@
  * Controller of the main page
  */
 export default class MainController {
-  constructor($scope, $location) {
+  constructor($scope, $location, WineCardService) {
     /**
      * @property {object} actions List of available actions on the main page
      */
@@ -23,9 +23,9 @@ export default class MainController {
       console.log(id);
       switch (id) {
         case 'NEW_WINE_ACT':
-          //TasteService.newWine();
-          console.log('redirect path');
-          //$location.path('/wine/new');
+          WineCardService.newWine();
+          console.log('new wine');
+          $location.path('/wine/new');
           break;
       }
     };
@@ -38,4 +38,4 @@ export default class MainController {
     console.log("instantiate MainController");
   }
 }
-MainController.$inject = ['$scope', '$location'];
+MainController.$inject = ['$scope', '$location', 'WineCardService'];

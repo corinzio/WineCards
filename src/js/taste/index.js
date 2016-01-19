@@ -1,5 +1,6 @@
 import routing from './routing.js';
-import WineCardManager from "./WineCardManager";
+import WineCardService from "./WineCardService.js";
+import WineDescrController from "./WineDescrController.js";
 
 
 /**
@@ -8,6 +9,8 @@ import WineCardManager from "./WineCardManager";
 module.exports = (function () {
     'use strict';
     return angular.module('WineCards.Taste', ['pascalprecht.translate', 'ngRoute'])
+    .service('WineCardService',WineCardService)
+    .controller('WineDescrController',WineDescrController)
     .config(routing)
     .name;
 }());
