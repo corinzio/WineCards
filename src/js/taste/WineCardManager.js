@@ -85,5 +85,8 @@ export default class WineCardManager {
       this.clearCardParameters();
       this.getScores();
     };
+    this.getValues = function getValues(){
+      return angular.copy(this.card.parameters);
+    };
   }
 }

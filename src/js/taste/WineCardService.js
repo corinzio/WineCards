@@ -8,7 +8,7 @@ export default class WineCardService{
     constructor($window, $translate){
         this.wine = null;
         this.edit = true;
-        
+
         this.newWine = function newWine(){
             this.wine = new WineCardMgr();
         };
@@ -36,6 +36,12 @@ export default class WineCardService{
         };
         this.getParameters = function getParameters(){
             return this.wine.getParameters();
+        };
+        this.getScores = function getScores(){
+          return this.wine.getScores();
+        };
+        this.getValues = function getValues(){
+          return this.wine.getValues();
         };
         console.log("WineCardService Instantiated");
     }

@@ -48,7 +48,11 @@ export default function ratingComponent() {
      * set rating value
      */
     scope.setRating = function(idx) {
-      scope.score = idx + 1;
+      if ( (scope.score == idx + 1) && (scope.score !== 0)) {
+        scope.score = scope.score - 1;
+      } else {
+        scope.score = idx + 1;
+      }
       scope.stopHover();
     };
     /*
