@@ -13,7 +13,7 @@ module.exports = (function() {
   /**
    * Main module of the WineCards angular application
    */
-  return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences, WineCardsTaste ])
+  return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences, WineCardsTaste])
     .controller('MasterController', MasterController)
     //Configure i18n
     .config(['$translateProvider', function($translateProvider, $translate) {
@@ -35,6 +35,12 @@ module.exports = (function() {
       PrefService.loadPreferences();
       $translate.use(PrefService.getLanguage());
     }])
+    //init keyboard plugin
+    .run(function($window) {
+      $window.addEventListener('native.keyboardhide', function() {
+        $window.document.activeElement.blur();
+      });
+    })
     //add components
     .directive('starRating', comp.rating)
     .name;

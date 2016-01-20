@@ -25,7 +25,7 @@ export default class MainController {
         case 'NEW_WINE_ACT':
           WineCardService.newWine();
           console.log('new wine');
-          $location.path('/wine/new');
+          $location.path('/wine/new').replace();
           break;
       }
     };

@@ -10,5 +10,10 @@ export default function tasteroutes($routeProvider, $locationProvider) {
       template: require('./winescore.html'),
       controller: 'WineScoreController',
       controllerAs: 'scoreCtrl'
+    })
+    .when('/wine/new/summary',{
+      template: require('./winesummary.html'),
+      controller: 'WineSummaryController',
+      controllerAs: 'summaryCtrl'
     });
 }

@@ -1,0 +1,8 @@
+.rating .star{
+  padding-right: 10px;
+  text-shadow: .05em .05em #aaa;
+}
+
+.star .filled{
+  color: #fd0;
+}

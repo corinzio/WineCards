@@ -16,10 +16,11 @@ export default class WineScoreController{
       return a;
     };
     this.reset = function reset(){
-
+      this.points = WineCardService.resetValues();
     };
     this.save = function save(){
-
+      WineCardService.saveValues( this.points );
+      WineCardService.getTotalPoints();
     };
     this.backBtn = function bakBtn(event, data) {
       $location.path('/wine/new')

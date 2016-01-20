@@ -30,10 +30,12 @@ export default function ratingComponent() {
     scope.starClass = function(star, idx) {
       var starClass = 'fa-star-o';
       if (star.full) {
-        starClass = 'fa-star';
+        starClass = 'fa-star filled';
       }
       return starClass;
     };
+
+
     /**
      * watch on score attribute changes
      */

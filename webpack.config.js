@@ -76,6 +76,12 @@
           from: path.join(__dirname, '/src/static/lang/'), to: './static/lang/'
         },
         {
+          from: path.join(__dirname, '/src/static/font_awesome/'), to: './static/font_awesome/'
+        },
+        {
+          from: path.join(__dirname, '/src/static/fonts/'), to: './static/fonts/'
+        },
+        {
           from: path.join(__dirname, 'src/index.html')
         }
       ])

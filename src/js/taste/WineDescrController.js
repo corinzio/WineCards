@@ -24,7 +24,7 @@ export default class WineDescrController {
             .replace();
         };
         this.gotoNextPage = function gotoNextPage(){
-          $location.path('/wine/new/score');
+          $location.path('/wine/new/score').replace();
         };
         /**
          * @signal listen to the BACKBTN signal from MasterController to perform the back navigation

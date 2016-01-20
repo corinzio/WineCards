@@ -43,6 +43,16 @@ export default class WineCardService{
         this.getValues = function getValues(){
           return this.wine.getValues();
         };
+        this.resetValues = function resetValues(){
+          this.wine.clearCardParameters();
+          return this.getValues();
+        };
+        this.saveValues = function saveValues(val){
+          this.wine.saveValues(val);
+        };
+        this.getTotalPoints = function getTotalPoints(){
+          return this.wine.getTotalPoints();
+        };
         console.log("WineCardService Instantiated");
     }
 }

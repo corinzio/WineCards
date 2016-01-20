@@ -19,36 +19,18 @@ export default class WineCardManager {
       return angular.copy(this.scores);
     };
     this.clearCardParameters = function clearCardParameters() {
-      var i,
-        j,
-        par,
-        p2,
-        val,
-        p1 = Object.keys(this.card.parameters);
-      this.card.tot_score = 0;
-      for (i = 0; i < p1.length; i++) {
-        par = p1[i];
-        p2 = Object.keys(this.card.parameters[par]);
-        for (j = 0; j < p2.length; j++) {
-          val = p2[j];
+      for (let par in this.card.parameters) {
+        for (let val in this.card.parameters[par]) {
           this.card.parameters[par][val] = 0;
         }
       }
     };
     this.getTotalPoints = function getTotalPoints() {
       this.card.tot_score = 0;
-      var p1 = Object.keys(this.card.parameters),
-        p2,
-        i,
-        j,
-        val,
-        par;
-      for (i = 0; i < p1.length; i++) {
-        par = p1[i];
-        p2 = Object.keys(this.card.parameters[par]);
-        for (j = 0; j < p2.length; j++) {
-          val = p2[j];
-          this.card.tot_score = parseInt(this.card.tot_score, 10) + parseInt(this.card.parameters[par][val], 10);
+      this.getScores();
+      for (let par in this.card.parameters) {
+        for (let val in this.card.parameters[par]) {
+          this.card.tot_score = this.card.tot_score + this.scores.parameters[par][val][this.card.parameters[par][val]][0];
         }
       }
       return angular.copy(this.card.tot_score);
@@ -85,8 +67,11 @@ export default class WineCardManager {
       this.clearCardParameters();
       this.getScores();
     };
-    this.getValues = function getValues(){
+    this.getValues = function getValues() {
       return angular.copy(this.card.parameters);
+    };
+    this.saveValues = function saveValues(val) {
+      this.card.parameters = angular.copy(val);
     };
   }
 }
