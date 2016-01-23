@@ -53,6 +53,12 @@ export default class WineCardService{
         this.getTotalPoints = function getTotalPoints(){
           return this.wine.getTotalPoints();
         };
+        this.setNote = function setNote(note){
+          return this.wine.setNote(note);
+        };
+        this.getNote = function getNote(){
+          return this.wine.getNote();
+        };
         console.log("WineCardService Instantiated");
     }
 }

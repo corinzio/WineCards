@@ -21,6 +21,7 @@ export default class WineScoreController{
     this.save = function save(){
       WineCardService.saveValues( this.points );
       WineCardService.getTotalPoints();
+      $location.path('/wine/new/summary').replace();
     };
     this.backBtn = function bakBtn(event, data) {
       $location.path('/wine/new')
@@ -33,7 +34,4 @@ export default class WineScoreController{
     console.log("Instantiated WineScoreController");
   }
 }
-
-
-
 WineScoreController.$inject = ['WineCardService','$translate','$scope','$location'];

@@ -28,6 +28,7 @@ app.cordova = {
     console.log("Bootstrap angular");
     angular.bootstrap(document, [WineCards]);
   }
+
 };
 
 //Init Cordova App

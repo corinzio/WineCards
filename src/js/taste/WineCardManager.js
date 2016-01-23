@@ -73,5 +73,11 @@ export default class WineCardManager {
     this.saveValues = function saveValues(val) {
       this.card.parameters = angular.copy(val);
     };
+    this.setNote = function setNote(note){
+      this.card.wine_notes = angular.copy(note);
+    };
+    this.getNote = function getNote(note){
+      return angular.copy(this.card.wine_notes);
+    };
   }
 }

@@ -38,5 +38,7 @@
   "smell": "Smell",
   "taste": "Taste",
   "overall": "Overall",
-  "RESET": "Reset"
+  "RESET": "Reset",
+  "NOTES": "Notes",
+  "TOT_POINTS": "Total Points"
 }

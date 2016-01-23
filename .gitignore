@@ -6,3 +6,4 @@ hooks/*
 dist/*
 www/*
 private/*
+src/js/onesignal/onesignalkey.js

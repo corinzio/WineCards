@@ -5,6 +5,7 @@ export default function WineCard(spark = false){
     this.id = 0;
     this.wine_name = undefined;
     this.wine_year = undefined;
+    this.wine_notes = undefined;
     this.date = undefined;
     this.parameters = {};
     this.parameters.seeing = {

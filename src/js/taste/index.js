@@ -2,6 +2,7 @@ import routing from './routing.js';
 import WineCardService from "./WineCardService.js";
 import WineDescrController from "./WineDescrController.js";
 import WineScoreController from "./WineScoreController.js";
+import WineSummaryController from "./WineSummaryController.js";
 
 
 /**
@@ -13,6 +14,7 @@ module.exports = (function () {
     .service('WineCardService',WineCardService)
     .controller('WineDescrController',WineDescrController)
     .controller('WineScoreController',WineScoreController)
+    .controller('WineSummaryController', WineSummaryController)
     .config(routing)
     .name;
 }());

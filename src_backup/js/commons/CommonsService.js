@@ -1,4 +1,0 @@
-/** CommonsService.js **/
-(function(){
-  
-})();

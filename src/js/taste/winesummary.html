@@ -1,0 +1,35 @@
+<div layout-padding layout="column">
+  <form name="winesummary" novalidate>
+    <!-- description -->
+    <div>
+      <label>{{'WINETITLE'|translate}}
+        &nbsp;
+        <b>{{summaryCtrl.wine_name}}</b>
+      </label>
+    </div>
+    <div>
+      <label>{{'WINEYEAR'|translate}}
+        &nbsp;
+        <b>{{summaryCtrl.wine_year}}</b>
+      </label>
+    </div>
+    <!-- Points -->
+    <div>
+      <label flex>{{'TOT_POINTS'|translate}}
+        &nbsp;
+        <b>{{summaryCtrl.points}}</b>
+      </label>
+    </div>
+    <!-- Notes -->
+    <div>
+      <md-input-container class="md-block">
+        <label>{{'NOTES'|translate}}</label>
+        <textarea ng-model="summaryCtrl.note" columns="1" rows="7"></textarea>
+      </md-input-container>
+    </div>
+    <!-- Buttons -->
+    <section layout-align="center center" layout-wrap layout="row">
+      <md-button aria-label="Save" class="md-raised md-primary" ng-click="summaryCtrl.saveWine()">{{'SAVE'|translate}}</md-button>
+    </section>
+  </form>
+</div>

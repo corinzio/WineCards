@@ -38,5 +38,7 @@
   "smell": "Olfatto",
   "taste": "Gusto",
   "overall": "Giudizio Complessivo",
-  "RESET": "Azzera"
+  "RESET": "Azzera",
+  "NOTES": "Appunti",
+  "TOT_POINTS": "Punteggio totale"  
 }

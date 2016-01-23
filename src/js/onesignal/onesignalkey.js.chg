@@ -1,0 +1,6 @@
+export default class OneSignalKey{
+  constructor(){
+    this.google_prj = '9999999999999';
+    this.onesignalapp = '44444444-4444-4444-44444-4f414e47474d';
+  }
+}

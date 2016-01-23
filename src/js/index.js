@@ -8,12 +8,14 @@ import MasterController from './MasterController.js';
 import WineCardsPreferences from './preferences';
 import comp from './components';
 import WineCardsTaste from './taste';
+import WineCardsPush from './onesignal';
+
 module.exports = (function() {
   'use strict';
   /**
    * Main module of the WineCards angular application
    */
-  return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences, WineCardsTaste])
+  return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences, WineCardsTaste, WineCardsPush])
     .controller('MasterController', MasterController)
     //Configure i18n
     .config(['$translateProvider', function($translateProvider, $translate) {
