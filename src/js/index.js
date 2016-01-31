@@ -9,16 +9,17 @@ import WineCardsPreferences from './preferences';
 import comp from './components';
 import WineCardsTaste from './taste';
 import WineCardsPush from './onesignal';
+import WineCardsDb from './database';
 
 module.exports = (function() {
   'use strict';
   /**
    * Main module of the WineCards angular application
    */
-  return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences, WineCardsTaste, WineCardsPush])
+  return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences, WineCardsTaste, WineCardsPush, WineCardsDb])
     .controller('MasterController', MasterController)
     //Configure i18n
-    .config(['$translateProvider', function($translateProvider, $translate) {
+    .config(['$translateProvider', function($translateProvider) {
       $translateProvider.useStaticFilesLoader({
         prefix: 'static/lang/',
         suffix: '.json'
@@ -38,11 +39,11 @@ module.exports = (function() {
       $translate.use(PrefService.getLanguage());
     }])
     //init keyboard plugin
-    .run(function($window) {
+    .run(['$window',function($window) {
       $window.addEventListener('native.keyboardhide', function() {
         $window.document.activeElement.blur();
       });
-    })
+    }])
     //add components
     .directive('starRating', comp.rating)
     .name;

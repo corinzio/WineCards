@@ -40,5 +40,11 @@
   "overall": "Giudizio Complessivo",
   "RESET": "Azzera",
   "NOTES": "Appunti",
-  "TOT_POINTS": "Punteggio totale"  
+  "TOT_POINTS": "Punteggio totale",
+  "SAVE": "Salva",
+  "ADDPHOTO": "Inserisci Foto",
+  "STILL": "Fermo",
+  "COMMERCIALNAME": "Nome Commerciale",
+  "PRODUCER": "Produttore/Cantina"
+
 }

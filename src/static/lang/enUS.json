@@ -40,5 +40,10 @@
   "overall": "Overall",
   "RESET": "Reset",
   "NOTES": "Notes",
-  "TOT_POINTS": "Total Points"
+  "TOT_POINTS": "Total Points",
+  "SAVE": "Save",
+  "ADDPHOTO": "Take Photo",
+  "STILL": "Still",
+  "COMMERCIALNAME": "Commercial Name",
+  "PRODUCER": "Producer"        
 }

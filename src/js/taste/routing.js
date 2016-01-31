@@ -17,3 +17,5 @@ export default function tasteroutes($routeProvider, $locationProvider) {
       controllerAs: 'summaryCtrl'
     });
 }
+
+tasteroutes.$inject = ['$routeProvider', '$locationProvider'];

@@ -41,7 +41,6 @@ export default function ratingComponent() {
      */
     scope.$watch('score', function(newValue, oldValue) {
       if (newValue !== null && newValue !== undefined) {
-        console.log("call update stars");
         scope.updateStars();
       }
     });

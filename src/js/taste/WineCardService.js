@@ -2,64 +2,77 @@
 import angular from 'angular';
 import translate from 'angular-translate';
 import WineCardMgr from './WineCardManager.js';
-
-
-export default class WineCardService{
-    constructor($window, $translate){
-        this.wine = null;
-        this.edit = true;
-
-        this.newWine = function newWine(){
-            this.wine = new WineCardMgr();
-        };
-
-        this.setEdit = function setEdit(edt){
-            this.edit = edt;
-        };
-        this.getWineName = function getWineName(){
-            return this.wine.getName();
-        };
-        this.setWineName = function setWineName(name){
-            this.wine.setName(name);
-        };
-        this.getWineYear = function getWineYear(){
-            return this.wine.getWineYear();
-        };
-        this.setWineYear = function setWineYear(year){
-            this.wine.setWineYear(year);
-        };
-        this.getSparkling = function getSparkling(){
-            return this.wine.getSparkling();
-        };
-        this.setSparkling = function setSparkling(spark){
-            this.wine.setSparkling(spark);
-        };
-        this.getParameters = function getParameters(){
-            return this.wine.getParameters();
-        };
-        this.getScores = function getScores(){
-          return this.wine.getScores();
-        };
-        this.getValues = function getValues(){
-          return this.wine.getValues();
-        };
-        this.resetValues = function resetValues(){
-          this.wine.clearCardParameters();
-          return this.getValues();
-        };
-        this.saveValues = function saveValues(val){
-          this.wine.saveValues(val);
-        };
-        this.getTotalPoints = function getTotalPoints(){
-          return this.wine.getTotalPoints();
-        };
-        this.setNote = function setNote(note){
-          return this.wine.setNote(note);
-        };
-        this.getNote = function getNote(){
-          return this.wine.getNote();
-        };
-        console.log("WineCardService Instantiated");
-    }
+export default class WineCardService {
+  constructor() {
+    this.wine = null;
+    this.edit = true;
+    console.log("WineCardService Instantiated");
+  }
+  newWine() {
+    this.wine = new WineCardMgr();
+  }
+  setEdit(edt) {
+    this.edit = edt;
+  }
+  getWineName() {
+    return this.wine.getName();
+  }
+  setWineName(name) {
+    this.wine.setName(name);
+  }
+  getWineYear() {
+    return this.wine.getWineYear();
+  }
+  setWineYear(year) {
+    this.wine.setWineYear(year);
+  }
+  getSparkling() {
+    return this.wine.getSparkling();
+  }
+  setSparkling(spark) {
+    this.wine.setSparkling(spark);
+  }
+  getParameters() {
+    return this.wine.getParameters();
+  }
+  getScores() {
+    return this.wine.getScores();
+  }
+  getValues() {
+    return this.wine.getValues();
+  }
+  resetValues() {
+    this.wine.clearCardParameters();
+    return this.getValues();
+  }
+  saveValues(val) {
+    this.wine.saveValues(val);
+  }
+  getTotalPoints() {
+    return this.wine.getTotalPoints();
+  }
+  setNote(note) {
+    return this.wine.setNote(note);
+  }
+  getNote() {
+    return this.wine.getNote();
+  }
+  getPhoto(){
+    return this.wine.getPhoto();
+  }
+  setPhoto(data){
+    this.wine.setPhoto(data);
+  }
+  getCommercialName(){
+    return this.wine.getCommercialName();
+  }
+  serCommercialName(name){
+    this.wine.setCommercialName(name);
+  }
+  getProducer(){
+    return this.wine.getProducer();
+  }
+  setProducer(prod){
+    this.wine.setProducer(prod);
+  }
 }
-WineCardService.$inject = ['$window', '$translate'];

@@ -1,5 +1,7 @@
 export default function WineScore(sparkling) {
-  var score8 = [
+  'use strict';
+  
+  let score8 = [
     [0, "NEGATIVE"],
     [2, "POOR"],
     [4, "INSUFF"],
@@ -8,7 +10,7 @@ export default function WineScore(sparkling) {
     [7, "OPTIM"],
     [8, "EXCELLENT"]
   ];
-  var score7 = [
+  let score7 = [
     [0, "NEGATIVE"],
     [2, "POOR"],
     [3, "INSUFF"],
@@ -17,7 +19,7 @@ export default function WineScore(sparkling) {
     [6, "OPTIM"],
     [7, "EXCELLENT"]
   ];
-  var score6 = [
+  let score6 = [
     [0, "NEGATIVE"],
     [1, "POOR"],
     [2, "INSUFF"],

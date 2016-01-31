@@ -6,6 +6,7 @@
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var CopyWebpackPlugin = require('copy-webpack-plugin');
   var path = require('path');
+  var WebpackStrip = require('strip-loader');
 
   module.exports = {
     entry: {
@@ -32,7 +33,7 @@
         // Transpile .js files using babel-loader
         // Compiles ES6 and ES7 into ES5 code
         test: /\.js$/,
-        loader: 'babel!jshint',
+        loader: 'babel!jshint',//!strip-loader?strip[]=debug,strip[]=console.log',
         exclude: /node_modules/
       }, {
         // HTML LOADER

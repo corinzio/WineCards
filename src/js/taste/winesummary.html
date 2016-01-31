@@ -13,6 +13,9 @@
         <b>{{summaryCtrl.wine_year}}</b>
       </label>
     </div>
+    <div>
+        <b>{{summaryCtrl.sparkling|translate}}</b>
+    </div>
     <!-- Points -->
     <div>
       <label flex>{{'TOT_POINTS'|translate}}
@@ -20,12 +23,36 @@
         <b>{{summaryCtrl.points}}</b>
       </label>
     </div>
+    <!-- Other Data -->
+    <div layout-padding layout-wrap layout="row">
+      <!--Commercial name -->
+      <div flex-gt-sm="33" flex="50">
+      <md-input-container >
+        <label>{{'COMMERCIALNAME'|translate}}</label>
+        <input name="commercial_name" ng-model="summaryCtrl.commercial_name" />
+      </md-input-container>
+      </div>
+      <!--Producer -->
+      <div flex-gt-sm="33" flex="50">
+      <md-input-container >
+        <label>{{'PRODUCER'|translate}}</label>
+        <input name="producer" ng-model="summaryCtrl.producer" />
+      </md-input-container>
+      </div>
+    </div>
     <!-- Notes -->
     <div>
       <md-input-container class="md-block">
         <label>{{'NOTES'|translate}}</label>
         <textarea ng-model="summaryCtrl.note" columns="1" rows="7"></textarea>
       </md-input-container>
+    </div>
+    <!-- PHOTO -->
+    <div ng-show = "summaryCtrl.photo !== undefined">
+      <img src={{summaryCtrl.photo}} width="100%" />
+    </div>
+    <div>
+      <md-button aria-label="Photo" class="md-raised md-primary" ng-click="summaryCtrl.addPhoto()">{{'ADDPHOTO'|translate}}</md-button>
     </div>
     <!-- Buttons -->
     <section layout-align="center center" layout-wrap layout="row">
