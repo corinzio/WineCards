@@ -1,5 +1,24 @@
-<form name="general_preferences" novalidate>
+<form name="login_options" novalidate>
   <md-content layout-padding ng-cloak layout="column">
+    <section ng-show="loginCtrl.getAvailability() === false">
+      <label>{{'NOGOOGLEPLUS' | translate}}</label>
+    </section>
+    <section ng-show="loginCtrl.getAvailability() && loginCtrl.isLogged()">
+      <md-list>
+        <md-list-item>
+          <label ng-bind="loginCtrl.getUserFullname()"></label>
+        </md-list-item>
+      </md-list>
+      <section></section>
+    </section>
+    <section ng-show="loginCtrl.getAvailability() && !loginCtrl.isLogged()">
+      <md-list>
+        <md-list-item>
+          <md-button class="md-raised md-primary" aria-label="Login Google" ng-click="loginCtrl.googleLogin()">{{'GOOGLE_LOGIN'|translate}}</md-button>          
+        </md-list-item>
+      </md-list>
+    </section>
+    <!--
     <md-list>
       <md-list-item>
         <label for="langSelect">{{'LANGUAGE_SELECT' | translate}}</label>
@@ -13,5 +32,6 @@
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
       <md-button class="md-raised md-primary" aria-label="Save" ng-click="genPrefCtrl.savePreferences()">{{'SAVE_BUTTON'|translate}}</md-button>
     </section>
+-->
   </md-content>
 </form>

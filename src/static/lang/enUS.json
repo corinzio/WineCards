@@ -45,5 +45,8 @@
   "ADDPHOTO": "Take Photo",
   "STILL": "Still",
   "COMMERCIALNAME": "Commercial Name",
-  "PRODUCER": "Producer"        
+  "PRODUCER": "Producer",
+  "USER": "Profile",
+  "NOGOOGLEPLUS": "Google+ not installed",
+  "GOOGLE_LOGIN": "Google+ Login"
 }

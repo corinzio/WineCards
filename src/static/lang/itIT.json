@@ -45,6 +45,9 @@
   "ADDPHOTO": "Inserisci Foto",
   "STILL": "Fermo",
   "COMMERCIALNAME": "Nome Commerciale",
-  "PRODUCER": "Produttore/Cantina"
+  "PRODUCER": "Produttore/Cantina",
+  "USER": "Profilo",
+  "NOGOOGLEPLUS": "Google+ non è installato",
+  "GOOGLE_LOGIN": "Google+ Login"
 
 }

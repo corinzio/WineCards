@@ -10,13 +10,14 @@ import comp from './components';
 import WineCardsTaste from './taste';
 import WineCardsPush from './onesignal';
 import WineCardsDb from './database';
+import WineCardsLogin from './login';
 
 module.exports = (function() {
   'use strict';
   /**
    * Main module of the WineCards angular application
    */
-  return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences, WineCardsTaste, WineCardsPush, WineCardsDb])
+  return angular.module('WineCards', ['ngMaterial', 'pascalprecht.translate', 'ngRoute', 'ngAnimate', WineCardsMain, WineCardsPreferences, WineCardsTaste, WineCardsPush, WineCardsDb, WineCardsLogin])
     .controller('MasterController', MasterController)
     //Configure i18n
     .config(['$translateProvider', function($translateProvider) {
