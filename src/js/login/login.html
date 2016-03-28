@@ -1,20 +1,23 @@
 <form name="login_options" novalidate>
   <md-content layout-padding ng-cloak layout="column">
-    <section ng-show="loginCtrl.getAvailability() === false">
+    <section ng-show="loginCtrl.available === false">
       <label>{{'NOGOOGLEPLUS' | translate}}</label>
     </section>
-    <section ng-show="loginCtrl.getAvailability() && loginCtrl.isLogged()">
+    <section ng-show="loginCtrl.available && loginCtrl.logged">
       <md-list>
         <md-list-item>
-          <label ng-bind="loginCtrl.getUserFullname()"></label>
+          <label ng-bind="loginCtrl.user.email"></label>
+        </md-list-item>
+        <md-list-item>
+          <md-button class="md-raised md-primary" aria-label="Logout" ng-click="loginCtrl.googleLogout()">{{'GOOGLE_LOGOUT'|translate}}</md-button>
         </md-list-item>
       </md-list>
       <section></section>
     </section>
-    <section ng-show="loginCtrl.getAvailability() && !loginCtrl.isLogged()">
+    <section ng-show="loginCtrl.available && !loginCtrl.logged">
       <md-list>
         <md-list-item>
-          <md-button class="md-raised md-primary" aria-label="Login Google" ng-click="loginCtrl.googleLogin()">{{'GOOGLE_LOGIN'|translate}}</md-button>          
+          <md-button class="md-raised md-primary" aria-label="Login Google" ng-click="loginCtrl.googleLogin()">{{'GOOGLE_LOGIN'|translate}}</md-button>
         </md-list-item>
       </md-list>
     </section>

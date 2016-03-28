@@ -52,22 +52,10 @@ export default class MasterController {
         .toggle();
     };
     console.log("MasterController instantiated");
-    //set login callbacks
-    this.LoginService.setLoginCallbacks(
-      //success login
-      function(obj){
-//        $mdToast.show($mdToast.simple()
-//          .textContent(obj.msg)
-//          .position("top left")
-//          .hideDelay(2000));
-      },
-      //error login
-      function(obj){
+    /**
+     * Login Callbacks
+     */
 
-      },
-      //binder
-      this
-    );
   }
 }
 MasterController.$inject = ['$scope', '$mdSidenav', '$translate', '$location', '$window', 'LoginService'];

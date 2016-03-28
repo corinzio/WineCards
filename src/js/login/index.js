@@ -10,10 +10,11 @@ module.exports = (function() {
     .service('LoginService', LoginService)
     .controller('LoginController', LoginController)
     .config(loginroutes)
-    //init push service
+    //init login service
     .run(['LoginService',function(LoginService){
-      LoginService.checkAvailability();
-      LoginService.trySilentLogin();
+      console.log("configure service");
+      LoginService.configureLogin();
+      //LoginService.trySilentLogin();
     }])
     .name;
 }());

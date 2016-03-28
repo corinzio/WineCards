@@ -5,69 +5,76 @@ import loginkey from './loginkey.js';
 export default class LoginService {
   constructor($window, $translate) {
     this.$window = $window;
+    this.gsignin = $window.gsignin;
     this.$translate = $translate;
     this.options = loginkey;
     this.login = undefined;
     this.available = undefined;
-    this.loginCallbacks = [];
-    this.logoutCallbacks = [];
+    this.loginCallbacks = {};
+    this.logoutCallbacks = {};
+    this.login_running = false;
     console.log("Instantiated LoginService");
-  }
-  checkAvailability() {
-    console.log("Check google+");
-    this.$window.plugins.googleplus.isAvailable(function(available) {
-      if (available) {
-        console.log("Google+ Available");
-        this.available = true;
-      }
-      else{
-        console.log("Google+ not available");
-        this.available = false;
-      }
-    }.bind(this));
-  }
-  getAvailability() {
-    if (this.available === undefined) {
-      this.available = false;
-      this.checkAvailability();
-    }
-    return this.available;
-  }
-  setOffline(bool) {
-    if (bool) {
-      this.options.offline = true;
-    } else {
-      this.options.offline = false;
-    }
-  }
-  trySilentLogin() {
-    this.$window.plugins.googleplus.trySilentLogin(this.options, function(obj) {
-      console.log("silent login succesful");
+    this.loginSuccess = function(obj) {
+      console.log("login success: " + JSON.stringify(obj));
       this.login = obj;
-    }.bind(this), function(msg) {
-      //ERROR MESSAGE
-      console.log('silent login error: ' + msg);
-    }.bind(this));
-  }
-  executeLogin() {
-    this.$window.plugins.googleplus.login(this.options, function(obj) {
-      console.log("login succesful");
-      this.login = obj;
-      console.log(JSON.stringify(this.login));
-    }.bind(this), function(msg) {
-      //ERROR MESSAGE
+      angular.forEach(this.loginCallbacks, function(value, key) {
+        //call success function of all loginCallbacks
+        value[0](this.login);
+      }, this);
+      this.login_running = false;
+    };
+    this.loginError = function(msg) {
+      console.log("login error: " + msg);
+      angular.forEach(this.loginCallbacks, function(value, key) {
+        //call error function of all loginCallbacks
+        //in this context this = msg
+        value[1](this);
+      }, msg);
+      this.login_running = false;
+    };
+    this.logoutSuccess = function() {
       this.login = undefined;
-      console.log('login error: ' + msg);
-    }.bind(this));
+      angular.forEach(this.logoutCallbacks, function(value, key) {
+        value[0]();
+      });
+    };
+    this.logoutError = function(msg) {
+      angular.forEach(this.logoutCallbacks, function(value, key) {
+        value[1](msg);
+      }, msg);
+    };
+  }
+  configureLogin() {
+    this.gsignin.config(() => {
+      //Config and connection ok
+      console.log("gsignin config ok");
+      this.available = true;
+    }, () => {
+      //config or connection error
+      this.available = false;
+    }, this.options);
+  }
+  executeLogin(silent = false) {
+    console.log("perform login");
+    if (this.login_running === true || this.available === false) return;
+    this.login_running = true;
+    this.gsignin.login(this.loginSuccess.bind(this), this.loginError.bind(this), silent);
   }
   executeLogout() {
-    this.$window.plugins.googleplus.logout(function(msg) {
-      console.log("perform logout");
-      this.login = undefined;
-    });
+    console.log("perform logout");
+    this.gsignin.logout(this.logoutSuccess.bind(this), this.logoutError.bind(this));
   }
-  setLoginCallbacks(succ, err, binder) {
-    this.loginCallbacks.push([succ.bind(binder), err.bind(binder)]);
+  addLogoutCallbacks(description, succ, err, binder) {
+    this.logoutCallbacks[description] = [succ.bind(binder), err.bind(binder)];
+  }
+  delLogoutCallbacks(description) {
+    delete this.logoutCallbacks[description];
+  }
+  addLoginCallbacks(description, succ, err, binder) {
+    this.loginCallbacks[description] = [succ.bind(binder), err.bind(binder)];
+  }
+  delLoginCallbacks(description) {
+    delete this.loginCallbacks[description];
   }
   isLogged() {
     if (this.login !== undefined) {
@@ -82,6 +89,12 @@ export default class LoginService {
     } else {
       return "";
     }
+  }
+  getLogin() {
+    return this.login;
+  }
+  getAvailability() {
+    return this.available;
   }
 }
 LoginService.$inject = ['$window', '$translate'];
