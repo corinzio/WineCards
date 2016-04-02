@@ -6,8 +6,9 @@ import angular from "angular";
  * Manage left side menu show/hide and navigation
  */
 export default class MasterController {
-  constructor($scope, $mdSidenav, $translate, $location, $window, LoginService) {
+  constructor($scope, $mdSidenav, $translate, $location, $window, $mdToast, $q, LoginService) {
     this.LoginService = LoginService;
+    this.ToastService = $mdToast;
     console.log("instantiating MasterController");
     /**
      * Back button pressed
@@ -51,11 +52,27 @@ export default class MasterController {
       $mdSidenav('leftMenu')
         .toggle();
     };
-    console.log("MasterController instantiated");
+
     /**
      * Login Callbacks
      */
+     this.loginOk = function(obj){
+       console.log("mastercontroller login success");
+       this.ToastService.show($mdToast.simple()
+         .textContent(obj.name)
+         .position("top left")
+         .hideDelay(2000));
+     };
 
+     this.loginErr = function(msg){
+       console.log("login error MasterController");
+     };
+
+     console.log("MasterController instantiated");
+     console.log("configure login service from MasterController");
+     this.LoginService.addLoginCallbacks(this.classname,this.loginOk, this.loginErr, this);
+     var a = this.LoginService.configureLogin();
+     a.then(function(){this.LoginService.executeLogin(true);}.bind(this));
   }
 }
-MasterController.$inject = ['$scope', '$mdSidenav', '$translate', '$location', '$window', 'LoginService'];
+MasterController.$inject = ['$scope', '$mdSidenav', '$translate', '$location', '$window', '$mdToast', '$q', 'LoginService'];

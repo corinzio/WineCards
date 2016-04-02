@@ -3,7 +3,8 @@ import angular from 'angular';
 import translate from 'angular-translate';
 import loginkey from './loginkey.js';
 export default class LoginService {
-  constructor($window, $translate) {
+  constructor($window, $translate, $q) {
+    this.q = $q;
     this.$window = $window;
     this.gsignin = $window.gsignin;
     this.$translate = $translate;
@@ -45,18 +46,23 @@ export default class LoginService {
     };
   }
   configureLogin() {
+    var p = this.q.defer();
+
     this.gsignin.config(() => {
       //Config and connection ok
       console.log("gsignin config ok");
       this.available = true;
+      p.resolve();
     }, () => {
       //config or connection error
       this.available = false;
+      p.reject();
     }, this.options);
+    return p.promise;
   }
   executeLogin(silent = false) {
     console.log("perform login");
-    if (this.login_running === true || this.available === false) return;
+    if (this.login_running === true || this.available !== true) { console.log("login unavailable now"); return;}
     this.login_running = true;
     this.gsignin.login(this.loginSuccess.bind(this), this.loginError.bind(this), silent);
   }
@@ -97,4 +103,4 @@ export default class LoginService {
     return this.available;
   }
 }
-LoginService.$inject = ['$window', '$translate'];
+LoginService.$inject = ['$window', '$translate', '$q'];

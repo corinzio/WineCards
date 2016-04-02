@@ -47,7 +47,7 @@
   "COMMERCIALNAME": "Nome Commerciale",
   "PRODUCER": "Produttore/Cantina",
   "USER": "Profilo",
-  "NOGOOGLEPLUS": "Google+ non è installato",
-  "GOOGLE_LOGIN": "Google+ Login"
+  "GOOGLE_LOGIN": "Google Login",
+  "GOOGLE_LOGOUT": "Logout"  
 
 }

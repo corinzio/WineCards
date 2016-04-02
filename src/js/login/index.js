@@ -12,9 +12,7 @@ module.exports = (function() {
     .config(loginroutes)
     //init login service
     .run(['LoginService',function(LoginService){
-      console.log("configure service");
-      LoginService.configureLogin();
-      //LoginService.trySilentLogin();
+      console.log("init login service");
     }])
     .name;
 }());
