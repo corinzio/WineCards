@@ -1,5 +1,5 @@
 import angular from 'angular';
-import WineDbService from ./WineDbService.js';
+import WineDbService from './WineDbService.js';
 
 module.exports = (function() {
   'use strict';

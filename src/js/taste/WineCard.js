@@ -2,7 +2,6 @@
 export default function WineCard(spark = false){
     'use strict';
     let card = {};
-    this.id = 0;
     this.wine_name = undefined;
     this.wine_year = undefined;
     this.wine_notes = undefined;

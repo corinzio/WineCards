@@ -12,7 +12,21 @@ export default class WineCardManager {
     }
     this.scores = null;
   }
+  getId() {
+    if(this.card.hasOwnProperty("id")){
+      return this.card.id;
+    }
+    else {
+      return undefined;
+    }
+  }
+  setId(id) {
+    this.card.id = id;
+  }
   getCard() {
+    return this.card;
+  }
+  getCardCopy(){
     return angular.copy(this.card);
   }
   getScores() {

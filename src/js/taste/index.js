@@ -4,13 +4,12 @@ import WineDescrController from "./WineDescrController.js";
 import WineScoreController from "./WineScoreController.js";
 import WineSummaryController from "./WineSummaryController.js";
 
-
 /**
 * Module for the tasting cards.
 */
 module.exports = (function () {
     'use strict';
-    return angular.module('WineCards.Taste', ['pascalprecht.translate', 'ngRoute'])
+    return angular.module('WineCards.Taste', ['pascalprecht.translate', 'ngRoute', 'WineCards.Database'])
     .service('WineCardService',WineCardService)
     .controller('WineDescrController',WineDescrController)
     .controller('WineScoreController',WineScoreController)

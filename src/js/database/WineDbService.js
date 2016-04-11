@@ -12,15 +12,16 @@ export default class WineDbService{
   createAndOpenDatabase() {
     this.cardsDB = new Dexie('cards');
     this.cardsDB.version(1).stores({
-      cards: "++id,wine_name,commercial_name,producer,wine_year,date'
+      cards: "++id,wine_name,commercial_name,producer,wine_year,date"
     });
-
     //Now open the database
     this.cardsDB.open();
   }
 
-  saveWineCard(card){
-    this.cardsDB.cards.add(card);
+  saveWineCard(card_mgr){
+    console.log("permanent save");
+    var c = card_mgr.getCard();
+    return this.cardsDB.cards.add(c);
   }
 
 }

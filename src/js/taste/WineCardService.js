@@ -2,8 +2,10 @@
 import angular from 'angular';
 import translate from 'angular-translate';
 import WineCardMgr from './WineCardManager.js';
+
 export default class WineCardService {
-  constructor() {
+  constructor( WineDbService) {
+    this.db = WineDbService;
     this.wine = null;
     this.edit = true;
     console.log("WineCardService Instantiated");
@@ -75,4 +77,18 @@ export default class WineCardService {
   setProducer(prod){
     this.wine.setProducer(prod);
   }
+  dbSave(){
+    console.log("try permanent save");
+    this.db.saveWineCard(this.wine)
+    .then(function(key){
+      console.log("added key: " + key);
+    //  this.wine.setId(key);
+    })
+    .catch(function(err){
+      console.log("error occurred " + err);
+    });
+    console.log("save ended");
+  }
 }
+
+WineCardService.$inject = ['WineDbService'];

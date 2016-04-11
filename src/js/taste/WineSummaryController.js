@@ -30,6 +30,7 @@ export default class WineSummaryController {
   saveWine() {
     this.WineCardService.setNote(this.note);
     console.log("saveWine");
+    this.WineCardService.dbSave();
   }
   addPhoto() {
     navigator.camera.getPicture(this.okPhoto.bind(this), this.errPhoto.bind(this), {
