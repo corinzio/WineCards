@@ -68,7 +68,7 @@ export default class WineCardService {
   getCommercialName(){
     return this.wine.getCommercialName();
   }
-  serCommercialName(name){
+  setCommercialName(name){
     this.wine.setCommercialName(name);
   }
   getProducer(){
@@ -78,16 +78,7 @@ export default class WineCardService {
     this.wine.setProducer(prod);
   }
   dbSave(){
-    console.log("try permanent save");
-    this.db.saveWineCard(this.wine)
-    .then(function(key){
-      console.log("added key: " + key);
-    //  this.wine.setId(key);
-    })
-    .catch(function(err){
-      console.log("error occurred " + err);
-    });
-    console.log("save ended");
+    return this.db.saveWineCard(this.wine);
   }
 }
 

@@ -48,5 +48,7 @@
   "PRODUCER": "Producer",
   "USER": "Profile",
   "GOOGLE_LOGIN": "Google Login",
-  "GOOGLE_LOGOUT": "Logout"
+  "GOOGLE_LOGOUT": "Logout",
+  "WINE_SAVE_ERROR": "Id {{id}} already present",
+  "WINE_SAVE_SUCCESS": "Saved succesfully"
 }

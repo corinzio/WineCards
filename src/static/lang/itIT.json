@@ -48,6 +48,8 @@
   "PRODUCER": "Produttore/Cantina",
   "USER": "Profilo",
   "GOOGLE_LOGIN": "Google Login",
-  "GOOGLE_LOGOUT": "Logout"  
+  "GOOGLE_LOGOUT": "Logout",
+  "SAVE_ERROR": "Id {{id}} già presente",
+  "WINE_SAVE_SUCCESS": "Salvataggio effettuato"  
 
 }

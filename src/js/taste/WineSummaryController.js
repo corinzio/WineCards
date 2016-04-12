@@ -4,6 +4,7 @@ export default class WineSummaryController {
     this.WineCardService = WineCardService;
     this.$location = $location;
     this.$translate = $translate;
+    this.$scope = $scope;
     this.wine_name = WineCardService.getWineName();
     this.wine_year = WineCardService.getWineYear();
     this.points = WineCardService.getTotalPoints();
@@ -27,11 +28,22 @@ export default class WineSummaryController {
         .replace();
     }.bind(this));
   }
-  saveWine() {
+
+  saveWine(){
     this.WineCardService.setNote(this.note);
-    console.log("saveWine");
-    this.WineCardService.dbSave();
+    this.WineCardService.setCommercialName(this.commercial_name);
+    this.WineCardService.setProducer(this.producer);
+    this.WineCardService.dbSave().then(function(key){
+      console.log("saved key: " + key);
+      this.$scope.$parent.toastMessage(this.$translate.instant("WINE_SAVE_SUCCESS",{id: key}));
+      this.$location.path("/").replace();
+    }.bind(this))
+    .catch(function(err){
+      console.log("error: " +err);
+      this.$scope.$parent.toastMessage(err);
+    }.bind(this));
   }
+
   addPhoto() {
     navigator.camera.getPicture(this.okPhoto.bind(this), this.errPhoto.bind(this), {
       destinationType: Camera.DestinationType.DATA_URL,

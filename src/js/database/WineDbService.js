@@ -21,7 +21,17 @@ export default class WineDbService{
   saveWineCard(card_mgr){
     console.log("permanent save");
     var c = card_mgr.getCard();
-    return this.cardsDB.cards.add(c);
+    if(! c.hasOwnProperty("id")){
+      return this.cardsDB.cards.add(c);
+    }
+    else{
+      return this.$q(function(resolve,reject){
+        reject(this.$translate.instant("WINE_SAVE_ERROR",{id: c.id}));
+      });
+    }
+  }
+  updateWineCard(){
+    return true;
   }
 
 }

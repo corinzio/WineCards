@@ -53,6 +53,13 @@ export default class MasterController {
         .toggle();
     };
 
+    $scope.toastMessage = function toastMessage(string){
+      $mdToast.show($mdToast.simple()
+        .textContent(string)
+        .position("top left")
+        .hideDelay(2000));
+    };
+
     /**
      * Login Callbacks
      */
