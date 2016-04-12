@@ -1,3 +1,2 @@
 # WineCards
-Wine tasting cards in the Italian ONAV style
-
+Wine tasting cards in the Italian ONAV style.
